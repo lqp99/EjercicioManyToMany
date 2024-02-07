@@ -165,7 +165,7 @@ public class JobOfferDAOimpl implements JobOfferDAO {
 
     @Override
     public List<JobOffer> getJobOfferBySkill(String nameSkill) {
-        return null;
+
     }
 
     @Override
