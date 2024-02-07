@@ -9,8 +9,21 @@ userService
  */
 package ejercicioGestionDeCandidaturas.controllerServices;
 
-public class UserController {
-    public static void addOrUpdate(){
+import ejercicioGestionDeCandidaturas.implementations.UserDAOimpl;
+import ejercicioGestionDeCandidaturas.modelPojo.User;
 
+import java.util.*;
+
+public class UserController {
+    private static final UserDAOimpl userDAOimpl= new UserDAOimpl();
+
+    public static void createUser(User user){
+        List<User> users = userDAOimpl.getAllUsers();
+
+        for (User u : users){
+            if (u.getId() != user.getId()) {
+                userDAOimpl.createUser(user);
+            }
+        }
     }
 }

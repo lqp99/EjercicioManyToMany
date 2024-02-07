@@ -72,6 +72,27 @@ public class UserDAOimpl implements UserDAO {
         }
     }
 
+    public List<User> getAllUsers() {
+        try (Session session = HibernateUtil.getSessionFactory().openSession();){  //para hacer la conexión con la database.
+            CriteriaBuilder builder = session.getCriteriaBuilder();  //el CriteriaBuilder lo que nos permite es realizar modificaciones sobre el select.
+            CriteriaQuery<User> query = builder.createQuery(User.class);  //se tiene que poner la clase general, si quieres que devuelva un int, se pone Integer o Long.
+
+            Root<User> usersTable = query.from(User.class);  //se utilza para ver de que clase sacamos la información.
+
+            /*
+            select * (id, name, mail, description, telephone)
+            from users;
+             */
+            query.select(usersTable);
+
+            return session.createQuery(query).getResultList();
+        } catch (Exception ex) {
+            System.err.println(ex);
+            return null;  //si salta una exception devuelve null que es como no devolver nada.
+            //también pudes retornar un ArrayList vacío pero luego tienes que controlarlo cuando lo muestres.
+        }
+    }
+
     @Override
     public User getUser(Long idUser) {
         try (Session session = HibernateUtil.getSessionFactory().openSession();){  //para hacer la conexión con la database.
@@ -140,8 +161,6 @@ public class UserDAOimpl implements UserDAO {
             //también pudes retornar un ArrayList vacío pero luego tienes que controlarlo cuando lo muestres.
         }
     }
-
-
 
     @Override
     public List<Skill> getUserSkills(User user) {
