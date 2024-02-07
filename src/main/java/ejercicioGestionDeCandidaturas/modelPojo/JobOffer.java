@@ -57,14 +57,13 @@ public class JobOffer {
             })
     private Company company;
 
+
     //constructor
     public JobOffer() {
     }
 
 
     //toString
-
-
     @Override
     public String toString() {
         return "JobOffer{" +
@@ -82,6 +81,7 @@ public class JobOffer {
                 ", company=" + company +
                 '}';
     }
+
 
     //getters and setters
     public long getId() {

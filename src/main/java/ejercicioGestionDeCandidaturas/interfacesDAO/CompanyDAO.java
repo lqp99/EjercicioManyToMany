@@ -11,5 +11,5 @@ public interface CompanyDAO {
     public Company getCompany(Long idCompany);
     public Company getCompanyByName(String companyName);
     public List<JobOffer> getJobOffers(Company company);
-    public List<Candidature> getCandidaturesByJobOffer(Company company, JobOffer jobOffer);
+    public List<Candidature> getCandidaturesByJobOffer(JobOffer jobOffer, Company company);
 }

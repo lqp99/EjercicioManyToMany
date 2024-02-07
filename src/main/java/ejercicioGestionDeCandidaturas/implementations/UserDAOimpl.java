@@ -77,14 +77,15 @@ public class UserDAOimpl implements UserDAO {
         try (Session session = HibernateUtil.getSessionFactory().openSession();){  //para hacer la conexión con la database.
             CriteriaBuilder builder = session.getCriteriaBuilder();  //el CriteriaBuilder lo que nos permite es realizar modificaciones sobre el select.
             CriteriaQuery<User> query = builder.createQuery(User.class);  //se tiene que poner la clase general, si quieres que devuelva un int, se pone Integer o Long.
-            Root<User> root = query.from(User.class);  //se utilza para ver de que clase sacamos la información.
+
+            Root<User> usersTable = query.from(User.class);  //se utilza para ver de que clase sacamos la información.
 
             /*
             select * (id, name, mail, description, telephone)
             from users
             where id = "id_user";
              */
-            query.select(root).where(builder.equal(root.get("id"), idUser));
+            query.select(usersTable).where(builder.equal(usersTable.get("id"), idUser));
 
             return session.createQuery(query).getSingleResult();
         } catch (Exception ex) {
@@ -99,14 +100,15 @@ public class UserDAOimpl implements UserDAO {
         try (Session session = HibernateUtil.getSessionFactory().openSession();){  //para hacer la conexión con la database.
             CriteriaBuilder builder = session.getCriteriaBuilder();  //el CriteriaBuilder lo que nos permite es realizar modificaciones sobre el select.
             CriteriaQuery<User> query = builder.createQuery(User.class);  //se tiene que poner la clase general, si quieres que devuelva un int, se pone Integer o Long.
-            Root<User> root = query.from(User.class);  //se utilza para ver de que clase sacamos la información.
+
+            Root<User> usersTable = query.from(User.class);  //se utilza para ver de que clase sacamos la información.
 
             /*
             select * (id, name, mail, description, telephone)
             from users
             where name = "user_name";
              */
-            query.select(root).where(builder.equal(root.get("name"), userName));
+            query.select(usersTable).where(builder.equal(usersTable.get("name"), userName));
 
             return session.createQuery(query).getSingleResult();
         } catch (Exception ex) {
@@ -121,14 +123,15 @@ public class UserDAOimpl implements UserDAO {
         try (Session session = HibernateUtil.getSessionFactory().openSession();){  //para hacer la conexión con la database.
             CriteriaBuilder builder = session.getCriteriaBuilder();  //el CriteriaBuilder lo que nos permite es realizar modificaciones sobre el select.
             CriteriaQuery<User> query = builder.createQuery(User.class);  //se tiene que poner la clase general, si quieres que devuelva un int, se pone Integer o Long.
-            Root<User> root = query.from(User.class);  //se utilza para ver de que clase sacamos la información.
+
+            Root<User> usersTable = query.from(User.class);  //se utilza para ver de que clase sacamos la información.
 
             /*
             select * (id, name, mail, description, telephone)
             from users
             where name like %user_name%;
              */
-            query.select(root).where(builder.like(root.get("name"), "%" + userName + "%"));
+            query.select(usersTable).where(builder.like(usersTable.get("name"), "%" + userName + "%"));
 
             return session.createQuery(query).getResultList();
         } catch (Exception ex) {
@@ -216,5 +219,4 @@ public class UserDAOimpl implements UserDAO {
             //también pudes retornar un ArrayList vacío pero luego tienes que controlarlo cuando lo muestres.
         }
     }
-
 }

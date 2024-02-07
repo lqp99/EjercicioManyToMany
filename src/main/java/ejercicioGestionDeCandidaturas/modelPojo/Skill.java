@@ -56,6 +56,7 @@ public class Skill {
                 '}';
     }
 
+
     //getters and setters
     public long getId() {
         return id;

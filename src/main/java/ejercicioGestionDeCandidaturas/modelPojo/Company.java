@@ -30,6 +30,7 @@ public class Company {
     )
     private List<JobOffer> jobOffers;
 
+
     //constructor
     public Company() {
     }
@@ -43,6 +44,7 @@ public class Company {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", laboralExperiences=" + laboralExperiences +
+                ", jobOffers=" + jobOffers +
                 '}';
     }
 
@@ -78,5 +80,13 @@ public class Company {
 
     public void setLaboralExperiences(List<LaboralExperience> laboralExperiences) {
         this.laboralExperiences = laboralExperiences;
+    }
+
+    public List<JobOffer> getJobOffers() {
+        return jobOffers;
+    }
+
+    public void setJobOffers(List<JobOffer> jobOffers) {
+        this.jobOffers = jobOffers;
     }
 }

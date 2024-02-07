@@ -6,6 +6,7 @@ import ejercicioGestionDeCandidaturas.modelPojo.*;
 import ejercicioGestionDeCandidaturas.utils.HibernateUtil;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Join;
 import jakarta.persistence.criteria.Root;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -75,14 +76,15 @@ public class JobOfferDAOimpl implements JobOfferDAO {
         try (Session session = HibernateUtil.getSessionFactory().openSession();){  //para hacer la conexión con la database.
             CriteriaBuilder builder = session.getCriteriaBuilder();  //el CriteriaBuilder lo que nos permite es realizar modificaciones sobre el select.
             CriteriaQuery<JobOffer> query = builder.createQuery(JobOffer.class);  //se tiene que poner la clase general, si quieres que devuelva un int, se pone Integer o Long.
-            Root<JobOffer> root = query.from(JobOffer.class);  //se utilza para ver de que clase sacamos la información.
+
+            Root<JobOffer> jobOffersTable = query.from(JobOffer.class);  //se utilza para ver de que clase sacamos la información.
 
             /*
             select * (id, name, mail, description, telephone)
             from job_offers
             where id = "id_JobOffer";
              */
-            query.select(root).where(builder.equal(root.get("id"), idJobOffer));
+            query.select(jobOffersTable).where(builder.equal(jobOffersTable.get("id"), idJobOffer));
 
             return session.createQuery(query).getSingleResult();
         } catch (Exception ex) {
@@ -97,14 +99,15 @@ public class JobOfferDAOimpl implements JobOfferDAO {
         try (Session session = HibernateUtil.getSessionFactory().openSession();){  //para hacer la conexión con la database.
             CriteriaBuilder builder = session.getCriteriaBuilder();  //el CriteriaBuilder lo que nos permite es realizar modificaciones sobre el select.
             CriteriaQuery<JobOffer> query = builder.createQuery(JobOffer.class);  //se tiene que poner la clase general, si quieres que devuelva un int, se pone Integer o Long.
-            Root<JobOffer> root = query.from(JobOffer.class);  //se utilza para ver de que clase sacamos la información.
+
+            Root<JobOffer> jobOffersTable = query.from(JobOffer.class);  //se utilza para ver de que clase sacamos la información.
 
             /*
-            select * (id, title, detail, location, workday_type, open, min_salary, max_salary, required_candidates)
+            select * (id, title, detail, location, workday_type, open, min_salary, max_salary, required_candidates, skills, candidatures, company)
             from job_offers
-            where title = "title";
+            where title like %jobOffer_title%;
              */
-            query.select(root).where(builder.like(root.get("title"), "%" + title + "%"));
+            query.select(jobOffersTable).where(builder.like(jobOffersTable.get("title"), "%" + title + "%"));
 
             return session.createQuery(query).getResultList();
         } catch (Exception ex) {
@@ -119,14 +122,15 @@ public class JobOfferDAOimpl implements JobOfferDAO {
         try (Session session = HibernateUtil.getSessionFactory().openSession();){  //para hacer la conexión con la database.
             CriteriaBuilder builder = session.getCriteriaBuilder();  //el CriteriaBuilder lo que nos permite es realizar modificaciones sobre el select.
             CriteriaQuery<JobOffer> query = builder.createQuery(JobOffer.class);  //se tiene que poner la clase general, si quieres que devuelva un int, se pone Integer o Long.
-            Root<JobOffer> root = query.from(JobOffer.class);  //se utilza para ver de que clase sacamos la información.
+
+            Root<JobOffer> jobOffersTable = query.from(JobOffer.class);  //se utilza para ver de que clase sacamos la información.
 
             /*
-            select * (id, name, mail, description, telephone)
+            select * (id, title, detail, location, workday_type, open, min_salary, max_salary, required_candidates, skills, candidatures, company)
             from job_offers
-            where id = "id_JobOffer";
+            where id = "JobOffer_id";
              */
-            query.select(root).where(builder.equal(root.get("min_salary"), salary));
+            query.select(jobOffersTable).where(builder.equal(jobOffersTable.get("min_salary"), salary));
 
             return session.createQuery(query).getResultList();
         } catch (Exception ex) {
@@ -141,14 +145,15 @@ public class JobOfferDAOimpl implements JobOfferDAO {
         try (Session session = HibernateUtil.getSessionFactory().openSession();){  //para hacer la conexión con la database.
             CriteriaBuilder builder = session.getCriteriaBuilder();  //el CriteriaBuilder lo que nos permite es realizar modificaciones sobre el select.
             CriteriaQuery<JobOffer> query = builder.createQuery(JobOffer.class);  //se tiene que poner la clase general, si quieres que devuelva un int, se pone Integer o Long.
-            Root<JobOffer> root = query.from(JobOffer.class);  //se utilza para ver de que clase sacamos la información.
+            
+            Root<JobOffer> jobOffersTable = query.from(JobOffer.class);  //se utilza para ver de que clase sacamos la información.
 
             /*
-            select * (id, name, mail, description, telephone)
+            select * (id, title, detail, location, workday_type, open, min_salary, max_salary, required_candidates, skills, candidatures, company)
             from job_offers
-            where location = "location";
+            where location = "jobOffer_location";
              */
-            query.select(root).where(builder.equal(root.get("location"), location));
+            query.select(jobOffersTable).where(builder.equal(jobOffersTable.get("location"), location));
 
             return session.createQuery(query).getResultList();
         } catch (Exception ex) {
@@ -165,26 +170,106 @@ public class JobOfferDAOimpl implements JobOfferDAO {
 
     @Override
     public List<JobOffer> getJobOfferBySkill(Skill skill) {
-        return null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession();){  //para hacer la conexión con la database.
+            CriteriaBuilder builder = session.getCriteriaBuilder();  //el CriteriaBuilder lo que nos permite es realizar modificaciones sobre el select.
+            CriteriaQuery<JobOffer> query = builder.createQuery(JobOffer.class);  //se tiene que poner la clase general, si quieres que devuelva un int, se pone Integer o Long.
+
+            Root<JobOffer> JobOffersTable = query.from(JobOffer.class);  //se utilza para ver de que clase sacamos la información.
+            Join<JobOffer, Skill> skillsTable = JobOffersTable.join("skills");  //esta tabla que devuelve es de la tabla que hacemos el join.
+
+            /*
+            select * (id, title, detail, location, workday_type, open, min_salary, max_salary, required_candidates, skills, candidatures, company)
+            from job_offers
+            inner join job_offers_skills
+            on id = skill_id
+            inner join skills
+            on id = job_offer_id;
+             */
+            query.select(JobOffersTable).where(builder.equal(skillsTable, skill));  //donde tengan el mismo id coge todas las "skill" y las devuelve en una lista.
+
+            return session.createQuery(query).getResultList();
+        } catch (Exception ex) {
+            System.err.println(ex);
+            return null;  //si salta una exception devuelve null que es como no devolver nada.
+            //también pudes retornar un ArrayList vacío pero luego tienes que controlarlo cuando lo muestres.
+        }
     }
 
     @Override
     public List<JobOffer> getJobOfferByCandidature(String candidature) {
-        return null;
+
     }
 
     @Override
     public List<Candidature> getJobOfferCandidatures(JobOffer jobOffer) {
-        return null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession();){  //para hacer la conexión con la database.
+            CriteriaBuilder builder = session.getCriteriaBuilder();  //el CriteriaBuilder lo que nos permite es realizar modificaciones sobre el select.
+            CriteriaQuery<Candidature> query = builder.createQuery(Candidature.class);  //se tiene que poner la clase general, si quieres que devuelva un int, se pone Integer o Long.
+
+            Root<Candidature> candidaturesTable = query.from(Candidature.class);  //se utilza para ver de que clase sacamos la información.
+            Join<Candidature, JobOffer> jobOfferTable = candidaturesTable.join("job_offers");  //esta tabla que devuelve es de la tabla que hacemos el join.
+
+            /*
+            select * (id, cv_path, cover_letter_path, status, user, jobOffer)
+            from candidature
+            inner join job_offers
+            on id = job_offer_id;
+             */
+            query.select(candidaturesTable).where(builder.equal(jobOfferTable, jobOffer));  //donde tengan el mismo id coge todas las "skill" y las devuelve en una lista.
+
+            return session.createQuery(query).getResultList();
+        } catch (Exception ex) {
+            System.err.println(ex);
+            return null;  //si salta una exception devuelve null que es como no devolver nada.
+            //también pudes retornar un ArrayList vacío pero luego tienes que controlarlo cuando lo muestres.
+        }
     }
 
     @Override
     public List<JobOffer> getJobOfferByCompany(Company company) {
-        return null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession();){  //para hacer la conexión con la database.
+            CriteriaBuilder builder = session.getCriteriaBuilder();  //el CriteriaBuilder lo que nos permite es realizar modificaciones sobre el select.
+            CriteriaQuery<JobOffer> query = builder.createQuery(JobOffer.class);  //se tiene que poner la clase general, si quieres que devuelva un int, se pone Integer o Long.
+
+            Root<JobOffer> jobOffersTable = query.from(JobOffer.class);  //se utilza para ver de que clase sacamos la información.
+            Join<JobOffer, Company> companiesTable = jobOffersTable.join("companies");  //esta tabla que devuelve es de la tabla que hacemos el join.
+
+            /*
+            select * (id, title, detail, location, workday_type, open, min_salary, max_salary, required_candidates, skills, candidatures, company)
+            from job_offers
+            inner join companies
+            on id = company_id;
+             */
+            query.select(jobOffersTable).where(builder.equal(companiesTable, company));  //donde tengan el mismo id coge todas los "JobOffer" y las devuelve en una lista.
+
+            return session.createQuery(query).getResultList();
+        } catch (Exception ex) {
+            System.err.println(ex);
+            return null;  //si salta una exception devuelve null que es como no devolver nada.
+            //también pudes retornar un ArrayList vacío pero luego tienes que controlarlo cuando lo muestres.
+        }
     }
 
     @Override
     public List<JobOffer> getJobOffersByWorkDayType(WorkDayType codigoType) {
-        return null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession();){  //para hacer la conexión con la database.
+            CriteriaBuilder builder = session.getCriteriaBuilder();  //el CriteriaBuilder lo que nos permite es realizar modificaciones sobre el select.
+            CriteriaQuery<JobOffer> query = builder.createQuery(JobOffer.class);  //se tiene que poner la clase general, si quieres que devuelva un int, se pone Integer o Long.
+
+            Root<JobOffer> jobOffersTable = query.from(JobOffer.class);  //se utilza para ver de que clase sacamos la información.
+
+            /*
+            select * (id, title, detail, location, workday_type, open, min_salary, max_salary, required_candidates, skills, candidatures, company)
+            from job_offers
+            where workday_type = "codigoType";
+             */
+            query.select(jobOffersTable).where(builder.equal(jobOffersTable.get("workday_type"), codigoType));
+
+            return session.createQuery(query).getResultList();
+        } catch (Exception ex) {
+            System.err.println(ex);
+            return null;  //si salta una exception devuelve null que es como no devolver nada.
+            //también pudes retornar un ArrayList vacío pero luego tienes que controlarlo cuando lo muestres.
+        }
     }
 }

@@ -75,14 +75,15 @@ public class CompanyDAOimpl implements CompanyDAO {
         try (Session session = HibernateUtil.getSessionFactory().openSession();){  //para hacer la conexión con la database.
             CriteriaBuilder builder = session.getCriteriaBuilder();  //el CriteriaBuilder lo que nos permite es realizar modificaciones sobre el select.
             CriteriaQuery<Company> query = builder.createQuery(Company.class);  //se tiene que poner la clase general, si quieres que devuelva un int, se pone Integer o Long.
-            Root<Company> root = query.from(Company.class);  //se utilza para ver de que clase sacamos la información.
+
+            Root<Company> companiesTable = query.from(Company.class);  //se utilza para ver de que clase sacamos la información.
 
             /*
-            select * (id, name, description)
+            select * (id, name, description, laboralExperiences, jobOffers)
             from companies
             where id = "id_company";
              */
-            query.select(root).where(builder.equal(root.get("id"), idCompany));
+            query.select(companiesTable).where(builder.equal(companiesTable.get("id"), idCompany));
 
             return session.createQuery(query).getSingleResult();
         } catch (Exception ex) {
@@ -97,14 +98,15 @@ public class CompanyDAOimpl implements CompanyDAO {
         try (Session session = HibernateUtil.getSessionFactory().openSession();){  //para hacer la conexión con la database.
             CriteriaBuilder builder = session.getCriteriaBuilder();  //el CriteriaBuilder lo que nos permite es realizar modificaciones sobre el select.
             CriteriaQuery<Company> query = builder.createQuery(Company.class);  //se tiene que poner la clase general, si quieres que devuelva un int, se pone Integer o Long.
-            Root<Company> root = query.from(Company.class);  //se utilza para ver de que clase sacamos la información.
+
+            Root<Company> companiesTable = query.from(Company.class);  //se utilza para ver de que clase sacamos la información.
 
             /*
-            select * (id, name, description)
+            select * (id, name, description, laboralExperiences, jobOffers)
             from companies
             where companyName = "company_name";
              */
-            query.select(root).where(builder.equal(root.get("name"), companyName));
+            query.select(companiesTable).where(builder.equal(companiesTable.get("name"), companyName));
 
             return session.createQuery(query).getSingleResult();
         } catch (Exception ex) {
@@ -124,9 +126,9 @@ public class CompanyDAOimpl implements CompanyDAO {
             Join<JobOffer, Company> companiesTable = jobOffersTable.join("companies");  //esta tabla que devuelve es de la tabla que hacemos el join.
 
             /*
-            select * (id, title, details, location, workday_type, open, min_salary, max_salary, required_candidates, skills, candidatures, company)
-            from company
-            inner join job_offers
+            select * (id, title, detail, location, workday_type, open, min_salary, max_salary, required_candidates, skills, candidatures, company)
+            from job_offers
+            inner join companies
             on id = company_id;
              */
             query.select(jobOffersTable).where(builder.equal(companiesTable, company));  //donde tengan el mismo id coge todas los "JobOffer" y las devuelve en una lista.
@@ -140,20 +142,24 @@ public class CompanyDAOimpl implements CompanyDAO {
     }
 
     @Override
-    public List<Candidature> getCandidaturesByJobOffer(Company company, JobOffer jobOffer) {
+    public List<Candidature> getCandidaturesByJobOffer(JobOffer jobOffer, Company company) {
         try (Session session = HibernateUtil.getSessionFactory().openSession();){  //para hacer la conexión con la database.
             CriteriaBuilder builder = session.getCriteriaBuilder();  //el CriteriaBuilder lo que nos permite es realizar modificaciones sobre el select.
-            CriteriaQuery<JobOffer> query = builder.createQuery(JobOffer.class);  //se tiene que poner la clase general, si quieres que devuelva un int, se pone Integer o Long.
-            Root<Company> root = query.from(Company.class);  //se utilza para ver de que clase sacamos la información.
-            Join<Company, JobOffer> joinJobOfferCompany = root.join("job_offers");  //esta tabla que devuelve es como si fuese de la tabla que no es root.
+            CriteriaQuery<Candidature> query = builder.createQuery(Candidature.class);  //se tiene que poner la clase general, si quieres que devuelva un int, se pone Integer o Long.
+            
+            Root<Candidature> candidaturesTable = query.from(Candidature.class);  //se utilza para ver de que clase sacamos la información.
+            Join<Candidature, JobOffer> jobOfferTables = candidaturesTable.join("job_offers");  //esta tabla que devuelve es de la tabla que hacemos el join.
+            Join<JobOffer, Company> companyTable = candidaturesTable.join("companies");  //esta tabla que devuelve es de la tabla que hacemos el join.
 
             /*
-            select * (id, title, details, location, workday_type, open, min_salary, max_salary, required_candidates, skills, candidatures, company)
+            select * (id, cv_path, cover_letter_path, status, user, jobOffer)
             from candidature
             inner join job_offers
+            on id = job_offer_id
+            inner join companies
             on id = company_id;
              */
-            query.select(joinJobOfferCompany).where(builder.equal(root, company));  //donde tengan el mismo id coge todas las "Skills" y las devuelve en una lista.
+            query.select(candidaturesTable).where(builder.equal(jobOfferTables, jobOffer), builder.equal(companyTable, company));  //donde tengan el mismo id coge todas las "Skills" y las devuelve en una lista.
 
             return session.createQuery(query).getResultList();
         } catch (Exception ex) {
