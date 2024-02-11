@@ -57,6 +57,12 @@ public class User {
     public User() {
     }
 
+    public User(String name, String mail, String description, int telephone) {
+        this.name = name;
+        this.mail = mail;
+        this.description = description;
+        this.telephone = telephone;
+    }
 
     //toString
     @Override

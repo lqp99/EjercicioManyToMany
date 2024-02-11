@@ -165,7 +165,9 @@ public class JobOfferDAOimpl implements JobOfferDAO {
 
     @Override
     public List<JobOffer> getJobOfferBySkill(String nameSkill) {
-
+        Skill skill = new Skill();
+        skill.setName(nameSkill);  //seteamos el nombre que nos pasan.
+        return getJobOfferBySkill(skill);  //hacemos un return llamando al método de obtener los JobOffer pasandole la skill.
     }
 
     @Override
@@ -193,11 +195,6 @@ public class JobOfferDAOimpl implements JobOfferDAO {
             return null;  //si salta una exception devuelve null que es como no devolver nada.
             //también pudes retornar un ArrayList vacío pero luego tienes que controlarlo cuando lo muestres.
         }
-    }
-
-    @Override
-    public List<JobOffer> getJobOfferByCandidature(String candidature) {
-
     }
 
     @Override

@@ -35,6 +35,11 @@ public class Company {
     public Company() {
     }
 
+    public Company(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
 
     //toString
     @Override
