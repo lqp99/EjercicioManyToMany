@@ -102,6 +102,7 @@ public class UserController {
         if (!skills.contains(skill)) {  //si la lista de skills no contiene la Skill que le pasamos....
             user.getSkills().add(skill);  //en user, cogemos la lista que tiene de skills y añadimos la skill que hemos creado.
             skill.getUsers().add(user);  //en skill, cogemos la lista que tiene de users y añadimos el user que nos pasan.
+            userDAOimpl.updateUser(user);  //actualizamos el usuario para que se guarden los cambios.
         }
 
 //        for (Skill s : skills) {  //nos recorremos esa List.
@@ -110,7 +111,7 @@ public class UserController {
 //                skill.getUsers().add(user);  //en skill, cogemos la lista que tiene de users y añadimos el user que nos pasan.
 //            }
 //        }
-        userDAOimpl.updateUser(user);  //actualizamos el usuario para que se guarden los cambios.
+
     }
 
     public void addSkill(User user, Skill skill) {
