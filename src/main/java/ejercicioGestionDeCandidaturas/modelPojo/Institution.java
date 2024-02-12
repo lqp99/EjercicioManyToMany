@@ -2,6 +2,7 @@ package ejercicioGestionDeCandidaturas.modelPojo;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity  //define que es una entidad dentro de una database.
@@ -21,17 +22,21 @@ public class Institution {
             joinColumns = @JoinColumn(name = "institution_id"),  //es la Foreign Key con el nombre de la clase donde se hace el @JoinTable.
             inverseJoinColumns = @JoinColumn(name = "user_id")  //la Foreign Key de la otra clase.
     )
-    private List<User> users;
+    private List<User> users = new ArrayList<>();
 
     @OneToMany(  //uno a muchos.
             mappedBy = "institution",  //mapeamos el valor de la variable de la otra clase que hace la relación con esta clase.
             cascade = {CascadeType.PERSIST, CascadeType.MERGE}  //al ser "CascadeType.PERSIST / MERGE" cada vez que se cree y actualice un "author", se hace en cascada y se modifica la referencia primero esta clase y luego en la que está referenciada.
     )
-    private List<AcademicInfo> academicInfos;
+    private List<AcademicInfo> academicInfos = new ArrayList<>();
 
 
     //constructor
     public Institution() {
+    }
+
+    public Institution(String name) {
+        this.name = name;
     }
 
 

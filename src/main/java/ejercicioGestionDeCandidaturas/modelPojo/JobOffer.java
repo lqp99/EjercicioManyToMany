@@ -2,6 +2,7 @@ package ejercicioGestionDeCandidaturas.modelPojo;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity  //define que es una entidad dentro de una database.
@@ -42,13 +43,14 @@ public class JobOffer {
             //El FetchType.EAGER: cuando se hace un select te trae ttodo lo que tiene que ver con esta clase. Te va a traer todas las asignaturas que tiene el profesor. Cuando te da un ERROR de que hay muchas llmadas se pone LAZY y se arregla.
             //El FetchType.LAZY: cuando se hace un select te trae ttodo lo que tiene que ver con esta clase menos las asignaturas y así controlas lo que te devuelve. Hay que crear un método para saber cuales asignatruas son las que están relacionadas con cada profesor.
     )
-    private List<Skill> skills;
+    private List<Skill> skills = new ArrayList<>();
 
-    @OneToMany(  //uno a muchos.
-            mappedBy = "jobOffer",  //mapeamos el valor de la variable de la otra clase que hace la relación con esta clase.
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE}  //al ser "CascadeType.PERSIST / MERGE" cada vez que se cree y actualice un "author", se hace en cascada y se modifica la referencia primero esta clase y luego en la que está referenciada.
-    )
-    private List<Candidature> candidatures;
+    @ManyToOne(  //muchos a uno.
+            cascade = {  //al ser "CascadeType.PERSIST / MERGE" cada vez que se cree o actualice un "Objeto", se hace en cascada y se modifica la referencia primero esta clase y luego en la que está referenciada.
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            })
+    private Candidature candidature;
 
     @ManyToOne(  //muchos a uno.
             cascade = {  //al ser "CascadeType.PERSIST / MERGE" cada vez que se cree o actualice un "Objeto", se hace en cascada y se modifica la referencia primero esta clase y luego en la que está referenciada.
@@ -60,6 +62,17 @@ public class JobOffer {
 
     //constructor
     public JobOffer() {
+    }
+
+    public JobOffer(String title, String details, String location, int workDayType, int open, int minSalary, int maxSalary, int requiredCandidates) {
+        this.title = title;
+        this.details = details;
+        this.location = location;
+        this.workDayType = workDayType;
+        this.open = open;
+        this.minSalary = minSalary;
+        this.maxSalary = maxSalary;
+        this.requiredCandidates = requiredCandidates;
     }
 
 
@@ -77,7 +90,7 @@ public class JobOffer {
                 ", maxSalary=" + maxSalary +
                 ", requiredCandidates=" + requiredCandidates +
                 ", skills=" + skills +
-                ", candidatures=" + candidatures +
+                ", candidatures=" + candidature +
                 ", company=" + company +
                 '}';
     }
@@ -164,12 +177,12 @@ public class JobOffer {
         this.skills = skills;
     }
 
-    public List<Candidature> getCandidatures() {
-        return candidatures;
+    public Candidature getCandidature() {
+        return candidature;
     }
 
-    public void setCandidatures(List<Candidature> candidatures) {
-        this.candidatures = candidatures;
+    public void setCandidature(Candidature candidature) {
+        this.candidature = candidature;
     }
 
     public Company getCompany() {

@@ -71,6 +71,7 @@ public class Login extends javax.swing.JFrame {
         companyName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         companyName.setText("jTextField1");
 
+        password2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         password2.setText("jPasswordField1");
 
         loginCompany.setText("Login Company");
@@ -153,9 +154,6 @@ public class Login extends javax.swing.JFrame {
                 .addContainerGap(79, Short.MAX_VALUE))
         );
 
-        loginUser.getAccessibleContext().setAccessibleName("Login User");
-        createUser.getAccessibleContext().setAccessibleName("Create User");
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -165,6 +163,8 @@ public class Login extends javax.swing.JFrame {
 
     private void createUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUserActionPerformed
         // TODO add your handling code here:
+        CreateUser cu = new CreateUser();
+        cu.setVisible(true);
     }//GEN-LAST:event_createUserActionPerformed
 
     private void loginCompanyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginCompanyActionPerformed

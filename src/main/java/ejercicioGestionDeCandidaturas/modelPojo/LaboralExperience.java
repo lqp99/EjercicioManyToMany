@@ -47,6 +47,15 @@ public class LaboralExperience {
     public LaboralExperience() {
     }
 
+    public LaboralExperience(String jobTitle, int initialDate, int endDate, int current, String descripcion, String location) {
+        this.jobTitle = jobTitle;
+        this.initialDate = initialDate;
+        this.endDate = endDate;
+        this.current = current;
+        this.descripcion = descripcion;
+        this.location = location;
+    }
+
 
     //toString
     @Override

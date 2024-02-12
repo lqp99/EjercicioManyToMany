@@ -2,6 +2,9 @@ package ejercicioGestionDeCandidaturas.modelPojo;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity  //define que es una entidad dentro de una database.
 @Table(name = "candidatures")  //para poner el nombre de la Tabla. Para que no se ponga como el nombre de la clase, se lo especificamos nosotros.
 public class Candidature {
@@ -26,16 +29,20 @@ public class Candidature {
             })
     private User user;
 
-    @ManyToOne(  //muchos a uno.
-            cascade = {  //al ser "CascadeType.PERSIST / MERGE" cada vez que se cree o actualice un "Objeto", se hace en cascada y se modifica la referencia primero esta clase y luego en la que está referenciada.
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-            })
-    private JobOffer jobOffer;
+    @OneToMany(  //uno a muchos.
+            mappedBy = "candidature",  //mapeamos el valor de la variable de la otra clase que hace la relación con esta clase.
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE}  //al ser "CascadeType.PERSIST / MERGE" cada vez que se cree y actualice un "author", se hace en cascada y se modifica la referencia primero esta clase y luego en la que está referenciada.
+    )
+    private List<JobOffer> jobOffers = new ArrayList<>();
 
 
     //constructor
     public Candidature() {
+    }
+
+    public Candidature(String cv, String cover_letter) {
+        this.cv = cv;
+        this.cover_letter = cover_letter;
     }
 
 
@@ -48,10 +55,9 @@ public class Candidature {
                 ", cover_letter='" + cover_letter + '\'' +
                 ", status=" + status +
                 ", user=" + user +
-                ", jobOffers=" + jobOffer +
+                ", jobOffers=" + jobOffers +
                 '}';
     }
-
 
     //getters and setters
     public long getId() {
@@ -94,11 +100,11 @@ public class Candidature {
         this.user = user;
     }
 
-    public JobOffer getJobOffer() {
-        return jobOffer;
+    public List<JobOffer> getJobOffers() {
+        return jobOffers;
     }
 
-    public void setJobOffer(JobOffer jobOffer) {
-        this.jobOffer = jobOffer;
+    public void setJobOffers(List<JobOffer> jobOffers) {
+        this.jobOffers = jobOffers;
     }
 }
