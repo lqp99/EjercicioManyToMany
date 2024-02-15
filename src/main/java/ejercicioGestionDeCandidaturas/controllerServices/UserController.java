@@ -159,4 +159,9 @@ public class UserController {
 
         userDAOimpl.updateUser(user);  //actualizamos el usuario para que se guarden los cambios.
     }
+
+    public User getUserByName(String userName) {
+        User user = userDAOimpl.getUserByName(userName);
+        return user;
+    }
 }

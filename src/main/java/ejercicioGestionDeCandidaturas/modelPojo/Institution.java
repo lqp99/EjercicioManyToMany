@@ -18,7 +18,7 @@ public class Institution {
 
     @ManyToMany /*(cascade = {CascadeType.PERSIST, CascadeType.MERGE})*/  //muchos a muchos. Al ser "CascadeType.PERSIST / MERGE" cada vez que se cree o actualice un "Objeto", se hace en cascada y se modifica la referencia primero esta clase y luego en la que está referenciada.
     @JoinTable(  //es la tabla que se genera cuando hay una relacion de muchos a muchos (N:M).
-            name = "academic_info",  //se pone el nombre de la tabla.
+            name = "academic_info",  //se pone el nombre de la tabla que se crea al hacer la referencia entre las dos clases.
             joinColumns = @JoinColumn(name = "institution_id"),  //es la Foreign Key con el nombre de la clase donde se hace el @JoinTable.
             inverseJoinColumns = @JoinColumn(name = "user_id")  //la Foreign Key de la otra clase.
     )

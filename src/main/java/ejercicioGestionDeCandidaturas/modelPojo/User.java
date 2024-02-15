@@ -6,8 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity  //define que es una entidad dentro de una database.
-@Table(name = "users")  //para poner el nombre de la Tabla. Para que no se ponga como el nombre de la clase, se lo especificamos nosotros.
-//uniqueConstraints = {@UniqueConstraint(columnNames = {"id", "mail"})})  //para que no se puedan introducir dos valores con estos dos mismos atributos iguales.
+@Table(
+        name = "users"  //para poner el nombre de la Tabla. Para que no se ponga como el nombre de la clase, se lo especificamos nosotros.
+        //uniqueConstraints = {@UniqueConstraint(columnNames = {"id", "mail"})}  //para que no se puedan introducir dos valores con estos dos mismos atributos iguales.
+)
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)  //para que se auto incremente solo.
@@ -27,8 +29,11 @@ public class User {
     @Column(name = "telephone")
     private int telephone;
 
+    @Column(name = "password")
+    private String password;
+
     @ManyToMany(  //muchos a muchos.
-            mappedBy = "users",  //En el mappedBy ponemos el nombre de la tabla de esta clase.
+            mappedBy = "users",  //mapeamos el valor de la variable de la otra clase que hace la relación con esta clase.
             //fetch = FetchType.LAZY
             //El FetchType.EAGER: cuando se hace un select te trae ttodo lo que tiene que ver con esta clase. Te va a traer todas las asignaturas que tiene el profesor. Cuando te da un ERROR de que hay muchas llmadas se pone LAZY y se arregla.
             //El FetchType.LAZY: por defecto si no pones nada es este. Cuando se hace un select te trae ttodo lo que tiene que ver con esta clase menos las asignaturas y así controlas lo que te devuelve. Hay que crear un método para saber cuales asignatruas son las que están relacionadas con cada profesor.
@@ -38,19 +43,28 @@ public class User {
 
     @OneToMany(  //uno a muchos.
             mappedBy = "user",  //mapeamos el valor de la variable de la otra clase que hace la relación con esta clase.
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE}  //al ser "CascadeType.PERSIST / MERGE" cada vez que se cree y actualice un "author", se hace en cascada y se modifica la referencia primero esta clase y luego en la que está referenciada.
+            cascade = {  //al ser "CascadeType.PERSIST / MERGE" cada vez que se cree y actualice un "author", se hace en cascada y se modifica la referencia primero esta clase y luego en la que está referenciada.
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            }
     )
     private List<Candidature> candidatures = new ArrayList<>();
 
     @OneToMany(  //uno a muchos.
             mappedBy = "user",  //mapeamos el valor de la variable de la otra clase que hace la relación con esta clase.
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE}  //al ser "CascadeType.PERSIST / MERGE" cada vez que se cree y actualice un "author", se hace en cascada y se modifica la referencia primero esta clase y luego en la que está referenciada.
+            cascade = {  //al ser "CascadeType.PERSIST / MERGE" cada vez que se cree y actualice un "author", se hace en cascada y se modifica la referencia primero esta clase y luego en la que está referenciada.
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            }
     )
     private List<LaboralExperience> laboralExperiences = new ArrayList<>();
 
     @OneToMany(  //uno a muchos.
             mappedBy = "user",  //mapeamos el valor de la variable de la otra clase que hace la relación con esta clase.
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE}  //al ser "CascadeType.PERSIST / MERGE" cada vez que se cree y actualice un "author", se hace en cascada y se modifica la referencia primero esta clase y luego en la que está referenciada.
+            cascade = {  //al ser "CascadeType.PERSIST / MERGE" cada vez que se cree y actualice un "author", se hace en cascada y se modifica la referencia primero esta clase y luego en la que está referenciada.
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            }
     )
     private List<AcademicInfo> academicInfos = new ArrayList<>();
 
@@ -123,6 +137,14 @@ public class User {
 
     public void setTelephone(int telephone) {
         this.telephone = telephone;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public List<Skill> getSkills() {

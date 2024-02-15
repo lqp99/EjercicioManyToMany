@@ -22,7 +22,7 @@ public class Skill {
                     CascadeType.MERGE
             })*/
     @JoinTable(  //es la tabla que se genera cuando hay una relacion de muchos a muchos (N:M).
-            name = "users_skills",  //se pone el nombre de la tabla.
+            name = "users_skills",  //se pone el nombre de la tabla que se crea al hacer la referencia entre las dos clases.
             joinColumns = @JoinColumn(name = "skill_id"),  //es la Foreign Key con el nombre de la clase donde se hace el @JoinTable.
             inverseJoinColumns = @JoinColumn(name = "user_id")  //la Foreign Key de la otra clase.
     )
