@@ -1,5 +1,6 @@
 package ejercicioGestionDeCandidaturas.modelPojo;
 
+import ejercicioGestionDeCandidaturas.enumerations.WorkDayType;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -23,10 +24,10 @@ public class JobOffer {
     private String location;
 
     @Column(name = "workday_type")
-    private int workDayType;
+    private WorkDayType workDayType;
 
     @Column(name = "open")
-    private int open;
+    private boolean open;
 
     @Column(name = "min_salary")
     private int minSalary;
@@ -46,14 +47,14 @@ public class JobOffer {
     private List<Skill> skills = new ArrayList<>();
 
     @ManyToOne(  //muchos a uno.
-            cascade = {  //al ser "CascadeType.PERSIST / MERGE" cada vez que se cree o actualice un "Objeto", se hace en cascada y se modifica la referencia primero esta clase y luego en la que está referenciada.
+            cascade = {  //al ser "CascadeType.PERSIST / MERGE" cada vez que se cree y actualice un "ObjetoDeEstaClase", se hace en cascada y se modifica la referencia primero esta clase y luego en la que está referenciada.
                     CascadeType.PERSIST,
                     CascadeType.MERGE
             })
     private Candidature candidature;
 
     @ManyToOne(  //muchos a uno.
-            cascade = {  //al ser "CascadeType.PERSIST / MERGE" cada vez que se cree o actualice un "Objeto", se hace en cascada y se modifica la referencia primero esta clase y luego en la que está referenciada.
+            cascade = {  //al ser "CascadeType.PERSIST / MERGE" cada vez que se cree y actualice un "ObjetoDeEstaClase", se hace en cascada y se modifica la referencia primero esta clase y luego en la que está referenciada.
                     CascadeType.PERSIST,
                     CascadeType.MERGE
             })
@@ -64,7 +65,7 @@ public class JobOffer {
     public JobOffer() {
     }
 
-    public JobOffer(String title, String details, String location, int workDayType, int open, int minSalary, int maxSalary, int requiredCandidates) {
+    public JobOffer(String title, String details, String location, WorkDayType workDayType, boolean open, int minSalary, int maxSalary, int requiredCandidates) {
         this.title = title;
         this.details = details;
         this.location = location;
@@ -129,19 +130,19 @@ public class JobOffer {
         this.location = location;
     }
 
-    public int getWorkDayType() {
+    public WorkDayType getWorkDayType() {
         return workDayType;
     }
 
-    public void setWorkDayType(int workDayType) {
+    public void setWorkDayType(WorkDayType workDayType) {
         this.workDayType = workDayType;
     }
 
-    public int getOpen() {
+    public boolean isOpen() {
         return open;
     }
 
-    public void setOpen(int open) {
+    public void setOpen(boolean open) {
         this.open = open;
     }
 

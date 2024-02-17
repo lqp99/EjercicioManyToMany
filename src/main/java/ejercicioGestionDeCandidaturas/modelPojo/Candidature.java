@@ -1,5 +1,6 @@
 package ejercicioGestionDeCandidaturas.modelPojo;
 
+import ejercicioGestionDeCandidaturas.enumerations.Status;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -14,16 +15,16 @@ public class Candidature {
     private long id;
 
     @Column(name = "cv_path")  //para que la columna de la tabla se llame como le digas.
-    private String cv;
+    private String cvPath;
 
     @Column(name = "cover_letter_path")  //para que la columna de la tabla se llame como le digas.
     private String cover_letter;
 
     @Column(name = "status")  //para que la columna de la tabla se llame como le digas.
-    private int status;
+    private Status status;
 
     @ManyToOne(  //muchos a uno.
-            cascade = {  //al ser "CascadeType.PERSIST / MERGE" cada vez que se cree o actualice un "Objeto", se hace en cascada y se modifica la referencia primero esta clase y luego en la que está referenciada.
+            cascade = {  //al ser "CascadeType.PERSIST / MERGE" cada vez que se cree y actualice un "ObjetoDeEstaClase", se hace en cascada y se modifica la referencia primero esta clase y luego en la que está referenciada.
                     CascadeType.PERSIST,
                     CascadeType.MERGE
             })
@@ -31,7 +32,10 @@ public class Candidature {
 
     @OneToMany(  //uno a muchos.
             mappedBy = "candidature",  //mapeamos el valor de la variable de la otra clase que hace la relación con esta clase.
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE}  //al ser "CascadeType.PERSIST / MERGE" cada vez que se cree y actualice un "author", se hace en cascada y se modifica la referencia primero esta clase y luego en la que está referenciada.
+            cascade = {  //al ser "CascadeType.PERSIST / MERGE" cada vez que se cree y actualice un "ObjetoDeEstaClase", se hace en cascada y se modifica la referencia primero esta clase y luego en la que está referenciada.
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            }
     )
     private List<JobOffer> jobOffers = new ArrayList<>();
 
@@ -40,8 +44,8 @@ public class Candidature {
     public Candidature() {
     }
 
-    public Candidature(String cv, String cover_letter) {
-        this.cv = cv;
+    public Candidature(String cvPath, String cover_letter) {
+        this.cvPath = cvPath;
         this.cover_letter = cover_letter;
     }
 
@@ -51,7 +55,7 @@ public class Candidature {
     public String toString() {
         return "Candidature{" +
                 "id=" + id +
-                ", cv='" + cv + '\'' +
+                ", cvPath='" + cvPath + '\'' +
                 ", cover_letter='" + cover_letter + '\'' +
                 ", status=" + status +
                 ", user=" + user +
@@ -68,12 +72,12 @@ public class Candidature {
         this.id = id;
     }
 
-    public String getCv() {
-        return cv;
+    public String getCvPath() {
+        return cvPath;
     }
 
-    public void setCv(String cv) {
-        this.cv = cv;
+    public void setCvPath(String cvPath) {
+        this.cvPath = cvPath;
     }
 
     public String getCover_letter() {
@@ -84,11 +88,11 @@ public class Candidature {
         this.cover_letter = cover_letter;
     }
 
-    public int getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 

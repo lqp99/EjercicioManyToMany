@@ -87,14 +87,6 @@ public class UserController {
         userDAOimpl.updateUser(user);  //actualizamos el usuario para que se guarden los cambios.
     }
 
-    public void addJobExperience(User user, LaboralExperience laboralExperience) {
-        user.getLaboralExperiences().add(laboralExperience);  //en user, cogemos la lista que tiene de laboralExperiences y añadimos la laboralExperience que nos pasan.
-
-        laboralExperience.setUser(user);  //setteamos el user.
-
-        userDAOimpl.updateUser(user);  //actualizamos el usuario para que se guarden los cambios.
-    }
-
     public void addSkill(User user, String skillName) {
         Skill skill = new Skill(skillName);  //creo una skill.
         List<Skill> skills = userDAOimpl.getUserSkills(user);  //creo una List con todas las skills que tiene el usuario.
@@ -149,6 +141,14 @@ public class UserController {
         userDAOimpl.updateUser(user);  //actualizamos el usuario para que se guarden los cambios.
     }
 
+    public void addJobExperience(User user, LaboralExperience laboralExperience) {
+        user.getLaboralExperiences().add(laboralExperience);  //en user, cogemos la lista que tiene de laboralExperiences y añadimos la laboralExperience que nos pasan.
+
+        laboralExperience.setUser(user);  //setteamos el user.
+
+        userDAOimpl.updateUser(user);  //actualizamos el usuario para que se guarden los cambios.
+    }
+
     public void addJobExperience(User user, LaboralExperience laboralExperience, Company company) {
         user.getLaboralExperiences().add(laboralExperience);  //en user, cogemos la lista que tiene de laboralExperiences y añadimos la laboralExperience que nos pasan.
 
@@ -163,5 +163,13 @@ public class UserController {
     public User getUserByName(String userName) {
         User user = userDAOimpl.getUserByName(userName);
         return user;
+    }
+
+    public void getUserSkills(User user) {
+        userDAOimpl.getUserSkills(user);
+    }
+
+    public void getUserLaboralExperience(User user) {
+        userDAOimpl.getUserLaboralExperience(user);
     }
 }

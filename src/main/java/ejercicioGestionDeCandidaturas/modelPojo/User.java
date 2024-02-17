@@ -37,13 +37,15 @@ public class User {
             //fetch = FetchType.LAZY
             //El FetchType.EAGER: cuando se hace un select te trae ttodo lo que tiene que ver con esta clase. Te va a traer todas las asignaturas que tiene el profesor. Cuando te da un ERROR de que hay muchas llmadas se pone LAZY y se arregla.
             //El FetchType.LAZY: por defecto si no pones nada es este. Cuando se hace un select te trae ttodo lo que tiene que ver con esta clase menos las asignaturas y así controlas lo que te devuelve. Hay que crear un método para saber cuales asignatruas son las que están relacionadas con cada profesor.
-            cascade = CascadeType.ALL
+            cascade = {  //al ser "CascadeType.ALL" cada vez que se cree, actualice, elimine un "ObjetoDeEstaClase", se hace en cascada y se modifica la referencia primero esta clase y luego en la que está referenciada.
+                    CascadeType.ALL
+            }
     )
     private List<Skill> skills = new ArrayList<>();
 
     @OneToMany(  //uno a muchos.
             mappedBy = "user",  //mapeamos el valor de la variable de la otra clase que hace la relación con esta clase.
-            cascade = {  //al ser "CascadeType.PERSIST / MERGE" cada vez que se cree y actualice un "author", se hace en cascada y se modifica la referencia primero esta clase y luego en la que está referenciada.
+            cascade = {  //al ser "CascadeType.PERSIST / MERGE" cada vez que se cree y actualice un "ObjetoDeEstaClase", se hace en cascada y se modifica la referencia primero esta clase y luego en la que está referenciada.
                     CascadeType.PERSIST,
                     CascadeType.MERGE
             }
@@ -52,7 +54,7 @@ public class User {
 
     @OneToMany(  //uno a muchos.
             mappedBy = "user",  //mapeamos el valor de la variable de la otra clase que hace la relación con esta clase.
-            cascade = {  //al ser "CascadeType.PERSIST / MERGE" cada vez que se cree y actualice un "author", se hace en cascada y se modifica la referencia primero esta clase y luego en la que está referenciada.
+            cascade = {  //al ser "CascadeType.PERSIST / MERGE" cada vez que se cree y actualice un "ObjetoDeEstaClase", se hace en cascada y se modifica la referencia primero esta clase y luego en la que está referenciada.
                     CascadeType.PERSIST,
                     CascadeType.MERGE
             }
@@ -61,7 +63,7 @@ public class User {
 
     @OneToMany(  //uno a muchos.
             mappedBy = "user",  //mapeamos el valor de la variable de la otra clase que hace la relación con esta clase.
-            cascade = {  //al ser "CascadeType.PERSIST / MERGE" cada vez que se cree y actualice un "author", se hace en cascada y se modifica la referencia primero esta clase y luego en la que está referenciada.
+            cascade = {  //al ser "CascadeType.PERSIST / MERGE" cada vez que se cree y actualice un "ObjetoDeEstaClase", se hace en cascada y se modifica la referencia primero esta clase y luego en la que está referenciada.
                     CascadeType.PERSIST,
                     CascadeType.MERGE
             }

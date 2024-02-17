@@ -26,7 +26,10 @@ public class Institution {
 
     @OneToMany(  //uno a muchos.
             mappedBy = "institution",  //mapeamos el valor de la variable de la otra clase que hace la relación con esta clase.
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE}  //al ser "CascadeType.PERSIST / MERGE" cada vez que se cree y actualice un "author", se hace en cascada y se modifica la referencia primero esta clase y luego en la que está referenciada.
+            cascade = {  //al ser "CascadeType.PERSIST / MERGE" cada vez que se cree y actualice un "ObjetoDeEstaClase", se hace en cascada y se modifica la referencia primero esta clase y luego en la que está referenciada.
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            }
     )
     private List<AcademicInfo> academicInfos = new ArrayList<>();
 

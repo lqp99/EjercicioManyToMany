@@ -14,7 +14,7 @@
         <!--<property name="dialect">org.hibernate.dialect.MariaDBDialect</property>-->
 
         <!-- Configuration of the SQL query display mode: -->
-        <property name="show_sql">true</property>  <!-- Para que todas las sentencias que se hagan aparezcan en pantalla (como si hicieras un sout) -->
+        <property name="show_sql">false</property>  <!-- Para que todas las sentencias que se hagan aparezcan en pantalla (como si hicieras un sout)(Si está en "true" aparecen) -->
 
         <!-- DDL generation configuration (create, update, validate, none) -->
             <!-- create: te va a crear las tabals siempre y va a machacar si están creadas -->

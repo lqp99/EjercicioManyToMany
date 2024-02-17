@@ -2,6 +2,8 @@ package ejercicioGestionDeCandidaturas.modelPojo;
 
 import jakarta.persistence.*;
 
+import java.util.Calendar;
+
 @Entity  //define que es una entidad dentro de una database.
 @Table(name = "laboral_experiences")  //para poner el nombre de la Tabla. Para que no se ponga como el nombre de la clase, se lo especificamos nosotros.
 public class LaboralExperience {
@@ -14,13 +16,13 @@ public class LaboralExperience {
     private String jobTitle;
 
     @Column(name = "init_date")
-    private int initialDate;
+    private Calendar initialDate;
 
     @Column(name = "end_date")
-    private int endDate;
+    private Calendar endDate;
 
     @Column(name = "current")
-    private int current;
+    private boolean current;
 
     @Column(name = "descripcion")
     private String descripcion;
@@ -29,14 +31,14 @@ public class LaboralExperience {
     private String location;
 
     @ManyToOne(  //muchos a uno.
-            cascade = {  //al ser "CascadeType.PERSIST / MERGE" cada vez que se cree o actualice un "Objeto", se hace en cascada y se modifica la referencia primero esta clase y luego en la que está referenciada.
+            cascade = {  //al ser "CascadeType.PERSIST / MERGE" cada vez que se cree y actualice un "ObjetoDeEstaClase", se hace en cascada y se modifica la referencia primero esta clase y luego en la que está referenciada.
                     CascadeType.PERSIST,
                     CascadeType.MERGE
             })
     private User user;
 
     @ManyToOne(  //muchos a uno.
-            cascade = {  //al ser "CascadeType.PERSIST / MERGE" cada vez que se cree o actualice un "Objeto", se hace en cascada y se modifica la referencia primero esta clase y luego en la que está referenciada.
+            cascade = {  //al ser "CascadeType.PERSIST / MERGE" cada vez que se cree y actualice un "ObjetoDeEstaClase", se hace en cascada y se modifica la referencia primero esta clase y luego en la que está referenciada.
                     CascadeType.PERSIST,
                     CascadeType.MERGE
             })
@@ -47,7 +49,7 @@ public class LaboralExperience {
     public LaboralExperience() {
     }
 
-    public LaboralExperience(String jobTitle, int initialDate, int endDate, int current, String descripcion, String location) {
+    public LaboralExperience(String jobTitle, Calendar initialDate, Calendar endDate, boolean current, String descripcion, String location) {
         this.jobTitle = jobTitle;
         this.initialDate = initialDate;
         this.endDate = endDate;
@@ -55,7 +57,6 @@ public class LaboralExperience {
         this.descripcion = descripcion;
         this.location = location;
     }
-
 
     //toString
     @Override
@@ -91,27 +92,27 @@ public class LaboralExperience {
         this.jobTitle = jobTitle;
     }
 
-    public int getInitialDate() {
+    public Calendar getInitialDate() {
         return initialDate;
     }
 
-    public void setInitialDate(int initialDate) {
+    public void setInitialDate(Calendar initialDate) {
         this.initialDate = initialDate;
     }
 
-    public int getEndDate() {
+    public Calendar getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(int endDate) {
+    public void setEndDate(Calendar endDate) {
         this.endDate = endDate;
     }
 
-    public int getCurrent() {
+    public boolean isCurrent() {
         return current;
     }
 
-    public void setCurrent(int current) {
+    public void setCurrent(boolean current) {
         this.current = current;
     }
 

@@ -2,6 +2,8 @@ package ejercicioGestionDeCandidaturas.modelPojo;
 
 import jakarta.persistence.*;
 
+import java.util.Calendar;
+
 @Entity  //define que es una entidad dentro de una database.
 @Table(name = "academic_info")  //para poner el nombre de la Tabla. Para que no se ponga como el nombre de la clase, se lo especificamos nosotros.
 public class AcademicInfo {
@@ -14,26 +16,26 @@ public class AcademicInfo {
     private String title;
 
     @Column(name = "init_date")
-    private int initialDate;
+    private Calendar initialDate;
 
     @Column(name = "end_date")
-    private int endDate;
+    private Calendar endDate;
 
     @Column(name = "current")
-    private int current;
+    private boolean current;
 
     @Column(name = "mean_score")
     private float meanScore;
 
     @ManyToOne(  //muchos a uno.
-            cascade = {  //al ser "CascadeType.PERSIST / MERGE" cada vez que se cree o actualice un "Objeto", se hace en cascada y se modifica la referencia primero esta clase y luego en la que está referenciada.
+            cascade = {  //al ser "CascadeType.PERSIST / MERGE" cada vez que se cree y actualice un "ObjetoDeEstaClase", se hace en cascada y se modifica la referencia primero esta clase y luego en la que está referenciada.
                     CascadeType.PERSIST,
                     CascadeType.MERGE
             })
     private User user;
 
     @ManyToOne(  //muchos a uno.
-            cascade = {  //al ser "CascadeType.PERSIST / MERGE" cada vez que se cree o actualice un "Objeto", se hace en cascada y se modifica la referencia primero esta clase y luego en la que está referenciada.
+            cascade = {  //al ser "CascadeType.PERSIST / MERGE" cada vez que se cree y actualice un "ObjetoDeEstaClase", se hace en cascada y se modifica la referencia primero esta clase y luego en la que está referenciada.
                     CascadeType.PERSIST,
                     CascadeType.MERGE
             })
@@ -76,27 +78,27 @@ public class AcademicInfo {
         this.title = title;
     }
 
-    public int getInitialDate() {
+    public Calendar getInitialDate() {
         return initialDate;
     }
 
-    public void setInitialDate(int initialDate) {
+    public void setInitialDate(Calendar initialDate) {
         this.initialDate = initialDate;
     }
 
-    public int getEndDate() {
+    public Calendar getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(int endDate) {
+    public void setEndDate(Calendar endDate) {
         this.endDate = endDate;
     }
 
-    public int getCurrent() {
+    public boolean isCurrent() {
         return current;
     }
 
-    public void setCurrent(int current) {
+    public void setCurrent(boolean current) {
         this.current = current;
     }
 
