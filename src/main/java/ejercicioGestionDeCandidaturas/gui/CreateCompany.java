@@ -177,8 +177,8 @@ public class CreateCompany extends javax.swing.JFrame {
     private void exit2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit2ActionPerformed
         // TODO add your handling code here:
         dispose();  //para que se cierre la página inicial.
-        Inicio i = new Inicio();
-        i.setVisible(true);
+        LoginCompany lc = new LoginCompany();
+        lc.setVisible(true);
     }//GEN-LAST:event_exit2ActionPerformed
 
     /**

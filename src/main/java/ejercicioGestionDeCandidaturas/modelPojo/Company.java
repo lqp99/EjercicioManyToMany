@@ -19,6 +19,9 @@ public class Company {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "password")
+    private String password;
+
     @OneToMany(  //uno a muchos.
             mappedBy = "company",  //mapeamos el valor de la variable de la otra clase que hace la relación con esta clase.
             cascade = {  //al ser "CascadeType.PERSIST / MERGE" cada vez que se cree y actualice un "ObjetoDeEstaClase", se hace en cascada y se modifica la referencia primero esta clase y luego en la que está referenciada.
@@ -45,6 +48,12 @@ public class Company {
     public Company(String name, String description) {
         this.name = name;
         this.description = description;
+    }
+
+    public Company(String name, String description, String password) {
+        this.name = name;
+        this.description = description;
+        this.password = password;
     }
 
 
@@ -84,6 +93,14 @@ public class Company {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public List<LaboralExperience> getLaboralExperiences() {

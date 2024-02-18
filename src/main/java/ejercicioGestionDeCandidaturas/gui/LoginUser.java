@@ -37,8 +37,8 @@ public class LoginUser extends javax.swing.JFrame {
         jTextFieldName = new javax.swing.JTextField();
         jPasswordField = new javax.swing.JPasswordField();
         loginUser = new javax.swing.JButton();
-        exit1 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        exit = new javax.swing.JButton();
+        register = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -86,21 +86,21 @@ public class LoginUser extends javax.swing.JFrame {
             }
         });
 
-        exit1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        exit1.setText("X");
-        exit1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 4, true));
-        exit1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        exit1.addActionListener(new java.awt.event.ActionListener() {
+        exit.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        exit.setText("X");
+        exit.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 4, true));
+        exit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exit1ActionPerformed(evt);
+                exitActionPerformed(evt);
             }
         });
 
-        jButton1.setText("No tienes usuario? REGISTRATE GRATIS");
-        jButton1.setBorderPainted(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        register.setText("No tienes usuario? REGISTRATE GRATIS");
+        register.setBorderPainted(false);
+        register.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                registerActionPerformed(evt);
             }
         });
 
@@ -118,10 +118,10 @@ public class LoginUser extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabelUsers, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(109, 109, 109)
-                        .addComponent(exit1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addComponent(jButton1)
+                        .addComponent(register)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -143,7 +143,7 @@ public class LoginUser extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(exit1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabelUsers, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -158,7 +158,7 @@ public class LoginUser extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(loginUser, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(register)
                 .addGap(14, 14, 14))
         );
 
@@ -188,12 +188,12 @@ public class LoginUser extends javax.swing.JFrame {
         String password = new String(this.jPasswordField.getPassword());
         
         if (userController.getUserByName(name) != null && userController.getUserByName(name).getPassword().equals(password)) {
-            JOptionPane.showMessageDialog(null, "Bienvenido al Sistema", "LOGIN CORRECTO", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Bienvenido al Sistema " + name, "LOGIN CORRECTO", JOptionPane.INFORMATION_MESSAGE);
             InfoUser infoUser = new InfoUser();
             infoUser.setVisible(true);
             dispose();
         } else {
-            JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos", "ERROR", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Nombre de usuario o contraseña incorrectos", "ERROR AL LOGEARSE", JOptionPane.ERROR_MESSAGE);
         }
 
         
@@ -210,23 +210,23 @@ public class LoginUser extends javax.swing.JFrame {
 //				}
     }//GEN-LAST:event_loginUserActionPerformed
 
-    private void exit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit1ActionPerformed
+    private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
         // TODO add your handling code here:
         dispose();  //para que se cierre la página actual.
         Inicio i = new Inicio();
         i.setVisible(true);
-    }//GEN-LAST:event_exit1ActionPerformed
+    }//GEN-LAST:event_exitActionPerformed
 
     private void jTextFieldNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldNameActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerActionPerformed
         // TODO add your handling code here:
         CreateUser cu = new CreateUser();
         cu.setVisible(true);
         dispose();  //para que se cierre la página actual.
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_registerActionPerformed
 
     private void jPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldActionPerformed
         // TODO add your handling code here:
@@ -281,8 +281,7 @@ public class LoginUser extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton exit1;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton exit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelUsers;
@@ -290,5 +289,6 @@ public class LoginUser extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPasswordField;
     private javax.swing.JTextField jTextFieldName;
     private javax.swing.JButton loginUser;
+    private javax.swing.JButton register;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,6 +4,7 @@ import ejercicioGestionDeCandidaturas.implementations.CompanyDAOimpl;
 import ejercicioGestionDeCandidaturas.implementations.JobOfferDAOimpl;
 import ejercicioGestionDeCandidaturas.modelPojo.Company;
 import ejercicioGestionDeCandidaturas.modelPojo.JobOffer;
+import ejercicioGestionDeCandidaturas.modelPojo.User;
 
 import java.util.ArrayList;
 
@@ -51,5 +52,10 @@ public class CompanyController {
         jobOffer.setCompany(company);  //se settea la compañía.
 
         companyDAOimpl.updateCompany(company);  //actualizamos la compañía para que se guarden los cambios.
+    }
+
+    public Company getCompanyByName(String companyName) {
+        Company company = companyDAOimpl.getCompanyByName(companyName);
+        return company;
     }
 }
