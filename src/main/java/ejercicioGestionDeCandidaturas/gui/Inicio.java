@@ -126,13 +126,14 @@ public class Inicio extends javax.swing.JFrame {
         // TODO add your handling code here:
         LoginCompany lc = new LoginCompany();
         lc.setVisible(true);
+        dispose();  //para que se cierre la página inicial.
     }//GEN-LAST:event_loginCompanyActionPerformed
 
     private void loginUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginUserActionPerformed
         // TODO add your handling code here:
         LoginUser lu = new LoginUser();
         lu.setVisible(true);
-        
+        dispose();  //para que se cierre la página inicial.
     }//GEN-LAST:event_loginUserActionPerformed
 
     /**
