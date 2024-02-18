@@ -189,7 +189,7 @@ public class LoginUser extends javax.swing.JFrame {
         String password = new String(this.password.getPassword());
         
         if (userController.getUserByName(name) != null && userController.getUserByName(name).getPassword().equals(password)) {
-            JOptionPane.showMessageDialog(null, "Bienvenido al Sistema", "DENTRO", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Bienvenido al Sistema", "LOGIN CORRECTO", JOptionPane.INFORMATION_MESSAGE);
             InfoUser infoUser = new InfoUser();
             infoUser.setVisible(true);
             dispose();
@@ -226,7 +226,7 @@ public class LoginUser extends javax.swing.JFrame {
         // TODO add your handling code here:
         CreateUser cu = new CreateUser();
         cu.setVisible(true);
-        dispose();  //para que se cierre la página inicial.
+        dispose();  //para que se cierre la página actual.
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed

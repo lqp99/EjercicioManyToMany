@@ -27,6 +27,14 @@ public class UserController {
         return user;  //devolvemos el user.
     }
 
+    public User createUser(String name, String mail, String description, int telephone, String password){
+        User user = new User(name, mail, description, telephone, password);  //creamos el user pasandole todos los datos por el constructor.
+
+        userDAOimpl.createUser(user);  //creamos el usuario.
+
+        return user;  //devolvemos el user.
+    }
+
     public void createUser(User user){
         userDAOimpl.createUser(user);
     }

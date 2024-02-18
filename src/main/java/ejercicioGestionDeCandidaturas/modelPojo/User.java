@@ -82,6 +82,13 @@ public class User {
         this.telephone = telephone;
     }
 
+    public User(String name, String mail, String description, int telephone, String password) {
+        this.name = name;
+        this.mail = mail;
+        this.description = description;
+        this.telephone = telephone;
+        this.password = password;
+    }
 
     //toString
     @Override
@@ -180,4 +187,6 @@ public class User {
     public void setAcademicInfos(List<AcademicInfo> academicInfos) {
         this.academicInfos = academicInfos;
     }
+
+
 }
