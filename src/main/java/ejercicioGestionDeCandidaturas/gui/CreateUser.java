@@ -258,12 +258,12 @@ public class CreateUser extends javax.swing.JFrame {
         
         if (name != null && mail != null && description != null && telephone > 99999 && password != null) {
             userController.createUser(name, mail, description, telephone, password);
-            JOptionPane.showMessageDialog(null, "Bienvenido al Sistema", "USUARIO CREADO CORRECTAMENTE", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Bienvenido al Sistema " + name, "USUARIO CREADO CORRECTAMENTE", JOptionPane.INFORMATION_MESSAGE);
             InfoUser infoUser = new InfoUser();
             infoUser.setVisible(true);
             dispose();
         } else {
-            JOptionPane.showMessageDialog(null, "No se han introducido los datos correctos", "ERROR AL CREAR EL USUARIO", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "No se han introducido datos correctos", "ERROR AL CREAR EL USUARIO", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_createUserActionPerformed
 
