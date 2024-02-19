@@ -67,7 +67,7 @@ public class LoginCompany extends javax.swing.JFrame {
         });
 
         jLabelCompany.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelCompany.setText("Companies");
+        jLabelCompany.setText("Company");
 
         name.setText("Nombre de compañía:");
 

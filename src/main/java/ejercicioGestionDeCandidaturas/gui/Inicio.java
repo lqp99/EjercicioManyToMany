@@ -32,9 +32,10 @@ public class Inicio extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        exit = new javax.swing.JButton();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
         loginUser = new javax.swing.JButton();
         loginCompany = new javax.swing.JButton();
-        exit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -46,26 +47,6 @@ public class Inicio extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logoLion.png"))); // NOI18N
 
-        loginUser.setBackground(new java.awt.Color(255, 102, 0));
-        loginUser.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        loginUser.setText("Login User");
-        loginUser.setActionCommand("loginUser");
-        loginUser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginUserActionPerformed(evt);
-            }
-        });
-
-        loginCompany.setBackground(new java.awt.Color(255, 102, 0));
-        loginCompany.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        loginCompany.setText("Login Company");
-        loginCompany.setActionCommand("loginUser");
-        loginCompany.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginCompanyActionPerformed(evt);
-            }
-        });
-
         exit.setBackground(new java.awt.Color(255, 102, 0));
         exit.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         exit.setText("EXIT");
@@ -76,6 +57,31 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
 
+        jTabbedPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTabbedPane1.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
+
+        loginUser.setBackground(new java.awt.Color(255, 102, 0));
+        loginUser.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        loginUser.setText("Login User");
+        loginUser.setActionCommand("loginUser");
+        loginUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginUserActionPerformed(evt);
+            }
+        });
+        jTabbedPane1.addTab("tab1", loginUser);
+
+        loginCompany.setBackground(new java.awt.Color(255, 102, 0));
+        loginCompany.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        loginCompany.setText("Login Company");
+        loginCompany.setActionCommand("loginUser");
+        loginCompany.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginCompanyActionPerformed(evt);
+            }
+        });
+        jTabbedPane1.addTab("tab2", loginCompany);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -85,22 +91,18 @@ public class Inicio extends javax.swing.JFrame {
                 .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(286, 286, 286)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(loginUser, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(loginCompany, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(313, 313, 313)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 210, Short.MAX_VALUE)
-                .addComponent(loginUser, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(248, 248, 248)
-                .addComponent(loginCompany, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(202, 202, 202))
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(216, 216, 216)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 732, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -176,6 +178,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton exit;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton loginCompany;
     private javax.swing.JButton loginUser;
     // End of variables declaration//GEN-END:variables
