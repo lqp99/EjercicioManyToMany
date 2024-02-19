@@ -34,6 +34,14 @@ public class CompanyController {
         return company;  //devolvemos la company.
     }
 
+    public Company createCompany(String name, String description, String password) {
+        Company company = new Company(name, description, password);
+
+        companyDAOimpl.createCompany(company);  //añado la empresa a la database.
+
+        return company;  //devolvemos la company.
+    }
+
     public void removeCompany(Company company) {
         companyDAOimpl.removeCompany(company);
     }

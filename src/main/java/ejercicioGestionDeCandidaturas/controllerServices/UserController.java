@@ -82,7 +82,6 @@ public class UserController {
         userDAOimpl.updateUser(user);  //actualizamos el usuario para que se guarden los cambios.
     }
 
-
     public void addAcademicInfo(User user, AcademicInfo academicInfo, Institution institution) {
         user.getAcademicInfos().add(academicInfo);  //en user, cogemos la lista que tiene de academicInfos y añadimos la academicInfo que nos pasan.
 
