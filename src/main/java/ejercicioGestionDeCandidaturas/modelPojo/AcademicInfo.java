@@ -2,6 +2,7 @@ package ejercicioGestionDeCandidaturas.modelPojo;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Calendar;
 
 @Entity  //define que es una entidad dentro de una database.
@@ -16,10 +17,10 @@ public class AcademicInfo {
     private String title;
 
     @Column(name = "init_date")
-    private Calendar initialDate;
+    private LocalDate initialDate;
 
     @Column(name = "end_date")
-    private Calendar endDate;
+    private LocalDate endDate;
 
     @Column(name = "current")
     private boolean current;
@@ -78,19 +79,19 @@ public class AcademicInfo {
         this.title = title;
     }
 
-    public Calendar getInitialDate() {
+    public LocalDate getInitialDate() {
         return initialDate;
     }
 
-    public void setInitialDate(Calendar initialDate) {
+    public void setInitialDate(LocalDate initialDate) {
         this.initialDate = initialDate;
     }
 
-    public Calendar getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Calendar endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 

@@ -21,7 +21,7 @@
             <!-- update: va a mirar si existen las tablas y si no existen las va a crear -->
             <!-- validate: va a verifivar que existen y si no existen va a dar un error  -->
             <!-- none: no va a hacer nada -->
-        <property name="hbm2ddl.auto">create</property>
+        <property name="hbm2ddl.auto">update</property>
 
         <!-- Entity class mapping -->
         <mapping class="ejercicioGestionDeCandidaturas.modelPojo.User" />  <!-- donde le dices que la clase que pones va a ser a partir de la cual se va a crear la tabla -->

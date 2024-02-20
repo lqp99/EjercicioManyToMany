@@ -6,6 +6,7 @@
 package ejercicioGestionDeCandidaturas.gui;
 
 import ejercicioGestionDeCandidaturas.controllerServices.UserController;
+import ejercicioGestionDeCandidaturas.modelPojo.User;
 import javax.swing.JOptionPane;
 
 /**
@@ -46,6 +47,8 @@ public class CreateUser extends javax.swing.JFrame {
         name = new javax.swing.JLabel();
         jTextFieldName = new javax.swing.JTextField();
         jPasswordField = new javax.swing.JPasswordField();
+        confirmPassword = new javax.swing.JLabel();
+        jPasswordField2 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(100, 50));
@@ -63,7 +66,7 @@ public class CreateUser extends javax.swing.JFrame {
             }
         });
 
-        mail.setText("Mail:");
+        mail.setText("Mail: *");
 
         jTextFieldMail.setText("Introduce el Mail");
         jTextFieldMail.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -91,7 +94,7 @@ public class CreateUser extends javax.swing.JFrame {
             }
         });
 
-        telephone.setText("Telephone:");
+        telephone.setText("Telephone: *");
 
         jTextFieldTelephone.setText("Introduce el Telefono");
         jTextFieldTelephone.setToolTipText("");
@@ -116,9 +119,9 @@ public class CreateUser extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Create User");
 
-        password.setText("Password:");
+        password.setText("Password: *");
 
-        name.setText("Name:");
+        name.setText("Name: *");
 
         jTextFieldName.setText("Introduce el Nombre");
         jTextFieldName.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -132,7 +135,7 @@ public class CreateUser extends javax.swing.JFrame {
             }
         });
 
-        jPasswordField.setText("jPasswordField");
+        jPasswordField.setText("Introduce la contraseña");
         jPasswordField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPasswordFieldMouseClicked(evt);
@@ -144,46 +147,56 @@ public class CreateUser extends javax.swing.JFrame {
             }
         });
 
+        confirmPassword.setText("Confirm Password: *");
+
+        jPasswordField2.setText("Introduce la contraseña");
+        jPasswordField2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPasswordField2MouseClicked(evt);
+            }
+        });
+        jPasswordField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(49, 49, 49)
+                .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(password, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(132, 132, 132))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextFieldTelephone)
-                                .addComponent(telephone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextFieldDescription)
-                                .addComponent(description, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextFieldMail)
-                                .addComponent(mail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextFieldName)
-                                .addComponent(name, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 61, Short.MAX_VALUE))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(119, 119, 119)
-                .addComponent(createUser)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(password, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(confirmPassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPasswordField2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                        .addComponent(jTextFieldTelephone, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(telephone, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextFieldDescription, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(description, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextFieldMail, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(mail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextFieldName, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(name, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                        .addComponent(jPasswordField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(exit2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(121, 121, 121)
+                .addComponent(createUser)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(exit2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(exit2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -204,9 +217,13 @@ public class CreateUser extends javax.swing.JFrame {
                 .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(confirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(createUser)
-                .addGap(22, 22, 22))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -250,18 +267,63 @@ public class CreateUser extends javax.swing.JFrame {
         String name = this.jTextFieldName.getText();
         String mail = this.jTextFieldMail.getText();
         String description = this.jTextFieldDescription.getText();
-        int telephone = Integer.parseInt(this.jTextFieldTelephone.getText());
+        int telephone = 0;
         String password = new String(this.jPasswordField.getPassword());
+        String confirmPassword = new String(this.jPasswordField2.getPassword());
         
-        if (!name.equals(null) || !mail.equals(null) || !description.equals(null) || telephone > 99999 || !password.equals(null)) {
-            this.userController.createUser(name, mail, description, telephone, password);
-            JOptionPane.showMessageDialog(null, "Bienvenido al Sistema " + name, "USUARIO CREADO CORRECTAMENTE", JOptionPane.INFORMATION_MESSAGE);
-            InfoUser infoUser = new InfoUser();
-            infoUser.setVisible(true);
-            dispose();
-        } else {
-            JOptionPane.showMessageDialog(null, "No se han introducido datos correctos", "ERROR AL CREAR EL USUARIO", JOptionPane.ERROR_MESSAGE);
+        
+        
+        if (name.equals("Introduce el Nombre") || name.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Hay que introducir un Nombre obligatoriamente", "ERROR, NOMBRE NO INTRODUCIDO", JOptionPane.ERROR_MESSAGE);
         }
+        
+        if (mail.equals("Introduce el Mail") || mail.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Hay que introducir un Mail obligatoriamente", "ERROR, MAIL NO INTRODUCIDO", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        if (description.equals("Introduce una Descripción")) {
+            description = "";
+        }
+        
+        if (this.jTextFieldTelephone.getText().equals("Introduce el Telefono") || this.jTextFieldTelephone.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Hay que introducir un Teléfono obligatoriamente", "ERROR, TELEPHONE NO INTRODUCIDO", JOptionPane.ERROR_MESSAGE);
+            telephone = 0;
+        } else {
+            try {
+                telephone = Integer.parseInt(this.jTextFieldTelephone.getText());
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "No se ha introducido un Teléfono valido", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+            telephone = 0;
+        }
+        
+//        if (telephone < 100000) {
+//            
+//        }
+        
+        if (password.equals("Introduce la contraseña") || password.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Hay que introducir una Contraseña obligatoriamente", "ERROR, PASSWORD NO INTRODUCIDO", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        if (confirmPassword.equals("Introduce la contraseña") || confirmPassword.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Hay que confirmar la Contraseña", "ERROR, PASSWORD NO CONFIRMADA", JOptionPane.ERROR_MESSAGE);
+        } else {
+            if (!confirmPassword.equals(password)) {
+                JOptionPane.showMessageDialog(null, "Las Contraseñas no coinciden", "ERROR", JOptionPane.ERROR_MESSAGE);
+            } else if(telephone < 100000){ 
+                //JOptionPane.showMessageDialog(null, "No se ha introducido un Teléfono valido", "ERROR", JOptionPane.ERROR_MESSAGE);
+            } else {
+                User user = new User(name, mail, description, telephone, password);
+                this.userController.createUser(user);
+                JOptionPane.showMessageDialog(null, "Bienvenido al Sistema " + name, "USUARIO CREADO CORRECTAMENTE", JOptionPane.INFORMATION_MESSAGE);
+                InfoUser infoUser = new InfoUser(user);
+                infoUser.setVisible(true);
+                dispose();  //para que se cierre la página actual.
+            }
+        }
+        
+        
+        
     }//GEN-LAST:event_createUserActionPerformed
 
     private void exit2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit2ActionPerformed
@@ -300,6 +362,15 @@ public class CreateUser extends javax.swing.JFrame {
         this.jPasswordField.setText("");
     }//GEN-LAST:event_jPasswordFieldMouseClicked
 
+    private void jPasswordField2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField2MouseClicked
+        // TODO add your handling code here:
+        this.jPasswordField2.setText("");
+    }//GEN-LAST:event_jPasswordField2MouseClicked
+
+    private void jPasswordField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -336,12 +407,14 @@ public class CreateUser extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel confirmPassword;
     private javax.swing.JButton createUser;
     private javax.swing.JLabel description;
     private javax.swing.JButton exit2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField;
+    private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JTextField jTextFieldDescription;
     private javax.swing.JTextField jTextFieldMail;
     private javax.swing.JTextField jTextFieldName;

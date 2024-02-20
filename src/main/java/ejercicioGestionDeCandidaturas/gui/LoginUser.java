@@ -6,6 +6,7 @@
 package ejercicioGestionDeCandidaturas.gui;
 
 import ejercicioGestionDeCandidaturas.controllerServices.UserController;
+import ejercicioGestionDeCandidaturas.modelPojo.User;
 import javax.swing.JOptionPane;
 
 /**
@@ -189,9 +190,12 @@ public class LoginUser extends javax.swing.JFrame {
         
         if (userController.getUserByName(name) != null && userController.getUserByName(name).getPassword().equals(password)) {
             JOptionPane.showMessageDialog(null, "Bienvenido al Sistema " + name, "LOGIN CORRECTO", JOptionPane.INFORMATION_MESSAGE);
-            InfoUser infoUser = new InfoUser();
+            
+            User user = userController.getUserByName(name);  //nos guardamos el user que inicia sesión.
+            
+            InfoUser infoUser = new InfoUser(user);
             infoUser.setVisible(true);
-            dispose();
+            dispose();  //para que se cierre la página actual.
         } else {
             JOptionPane.showMessageDialog(null, "Nombre de usuario o contraseña incorrectos", "ERROR AL LOGEARSE", JOptionPane.ERROR_MESSAGE);
         }
