@@ -12,7 +12,7 @@ public interface UserDAO {
     public void updateUser(User user);
     public void removeUser(User user);
     public User getUser(Long idUser);
-    public User getUserByName(String userName);
+    public User getUserByNameOrMail(String userName);
     public List<User> getUsersByName(String userName);
     public List<Skill> getUserSkills(User user);
     public List<LaboralExperience> getUserLaboralExperience(User user);

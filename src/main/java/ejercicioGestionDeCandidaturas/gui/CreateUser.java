@@ -316,7 +316,7 @@ public class CreateUser extends javax.swing.JFrame {
                 User user = new User(name, mail, description, telephone, password);
                 this.userController.createUser(user);
                 JOptionPane.showMessageDialog(null, "Bienvenido al Sistema " + name, "USUARIO CREADO CORRECTAMENTE", JOptionPane.INFORMATION_MESSAGE);
-                InfoUser infoUser = new InfoUser(user);
+                InfoUser infoUser = new InfoUser(this.userController, user);
                 infoUser.setVisible(true);
                 dispose();  //para que se cierre la página actual.
             }

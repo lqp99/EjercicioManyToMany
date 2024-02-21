@@ -117,7 +117,7 @@ public class UserDAOimpl implements UserDAO {
     }
 
     @Override
-    public User getUserByName(String userName) {
+    public User getUserByNameOrMail(String userNameOrMail) {
         try (Session session = HibernateUtil.getSessionFactory().openSession();){  //para hacer la conexión con la database.
             CriteriaBuilder builder = session.getCriteriaBuilder();  //el CriteriaBuilder lo que nos permite es realizar modificaciones sobre el select.
             CriteriaQuery<User> query = builder.createQuery(User.class);  //se tiene que poner la clase general, si quieres que devuelva un int, se pone Integer o Long.
@@ -127,9 +127,14 @@ public class UserDAOimpl implements UserDAO {
             /*
             select * (id, name, mail, description, telephone)
             from users
-            where name = "user_name";
+            where name = "user_name" or mail = "mail";
              */
-            query.select(usersTable).where(builder.equal(usersTable.get("name"), userName));
+            query.select(usersTable).where(
+                    builder.or(
+                            builder.equal(usersTable.get("name"), userNameOrMail),
+                            builder.equal(usersTable.get("mail"), userNameOrMail)
+                    )
+            );
 
             return session.createQuery(query).getSingleResult();
         } catch (Exception ex) {

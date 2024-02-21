@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  */
 public class LoginUser extends javax.swing.JFrame {
     
-    public static final UserController userController = new UserController();
+    public final UserController userController = new UserController();
     
     /**
      * Creates new form JFrameLogin
@@ -188,12 +188,12 @@ public class LoginUser extends javax.swing.JFrame {
         String name = this.jTextFieldName.getText();
         String password = new String(this.jPasswordField.getPassword());
         
-        if (userController.getUserByName(name) != null && userController.getUserByName(name).getPassword().equals(password)) {
+        if (this.userController.getUserByName(name) != null && this.userController.getUserByName(name).getPassword().equals(password)) {
             JOptionPane.showMessageDialog(null, "Bienvenido al Sistema " + name, "LOGIN CORRECTO", JOptionPane.INFORMATION_MESSAGE);
             
-            User user = userController.getUserByName(name);  //nos guardamos el user que inicia sesión.
+            User user = this.userController.getUserByName(name);  //nos guardamos el user que inicia sesión.
             
-            InfoUser infoUser = new InfoUser(user);
+            InfoUser infoUser = new InfoUser(this.userController, user);
             infoUser.setVisible(true);
             dispose();  //para que se cierre la página actual.
         } else {

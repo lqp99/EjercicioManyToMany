@@ -6,6 +6,7 @@
 package ejercicioGestionDeCandidaturas.gui;
 
 import ejercicioGestionDeCandidaturas.controllerServices.CompanyController;
+import ejercicioGestionDeCandidaturas.modelPojo.Company;
 import javax.swing.JOptionPane;
 
 /**
@@ -188,8 +189,11 @@ public class CreateCompany extends javax.swing.JFrame {
         if (!name.equals(null) || !description.equals(null) || !password.equals(null)) {
             this.companyController.createCompany(name, description, password);
             JOptionPane.showMessageDialog(null, "Bienvenido al Sistema " + name, "EMPRESA CREADA CORRECTAMENTE", JOptionPane.INFORMATION_MESSAGE);
-            InfoUser infoUser = new InfoUser();
-            infoUser.setVisible(true);
+            
+            Company company = new Company(name, description, password);
+            
+            InfoCompany infoCompany = new InfoCompany(this.companyController, company);
+            infoCompany.setVisible(true);
             dispose();
         } else {
             JOptionPane.showMessageDialog(null, "No se han introducido datos correctos", "ERROR AL CREAR LA EMPRESA", JOptionPane.ERROR_MESSAGE);

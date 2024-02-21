@@ -5,17 +5,23 @@
 
 package ejercicioGestionDeCandidaturas.gui;
 
+import ejercicioGestionDeCandidaturas.controllerServices.CompanyController;
+import ejercicioGestionDeCandidaturas.modelPojo.Company;
+
 /**
  *
  * @author Luis Quintano
  */
 public class InfoCompany extends javax.swing.JFrame {
 
-    /**
-     * Creates new form InfoCompany
-     */
-    public InfoCompany() {
+    private final CompanyController companyController;
+    private final Company company;
+    
+    
+    public InfoCompany(CompanyController companyController, Company company) {
         initComponents();
+        this.companyController = companyController;
+        this.company = company;
     }
 
     /**
@@ -28,16 +34,16 @@ public class InfoCompany extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        deleteUser = new javax.swing.JButton();
+        deleteCompany = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 102, 0));
 
-        deleteUser.setText("DELETE COMPANY");
-        deleteUser.addActionListener(new java.awt.event.ActionListener() {
+        deleteCompany.setText("DELETE COMPANY");
+        deleteCompany.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteUserActionPerformed(evt);
+                deleteCompanyActionPerformed(evt);
             }
         });
 
@@ -47,14 +53,14 @@ public class InfoCompany extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(1059, Short.MAX_VALUE)
-                .addComponent(deleteUser)
+                .addComponent(deleteCompany)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(670, Short.MAX_VALUE)
-                .addComponent(deleteUser, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(deleteCompany, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -78,10 +84,10 @@ public class InfoCompany extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void deleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteUserActionPerformed
+    private void deleteCompanyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteCompanyActionPerformed
         // TODO add your handling code here:
 
-    }//GEN-LAST:event_deleteUserActionPerformed
+    }//GEN-LAST:event_deleteCompanyActionPerformed
 
     /**
      * @param args the command line arguments
@@ -119,7 +125,7 @@ public class InfoCompany extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton deleteUser;
+    private javax.swing.JButton deleteCompany;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

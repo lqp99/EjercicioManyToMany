@@ -12,6 +12,7 @@ package ejercicioGestionDeCandidaturas.controllerServices;
 import ejercicioGestionDeCandidaturas.implementations.UserDAOimpl;
 import ejercicioGestionDeCandidaturas.modelPojo.*;
 
+import java.time.LocalDate;
 import java.util.*;
 
 public class UserController {
@@ -54,6 +55,19 @@ public class UserController {
         System.out.println("\tCandidatures: "+ user.getCandidatures());
         System.out.println("\tLaboral Experiences: "+ user.getLaboralExperiences());
         System.out.println("\tAcademic Info: "+ user.getAcademicInfos());
+    }
+
+    public User login(String userNameOrMail, String password) {
+        User user = this.userDAOimpl.getUserByNameOrMail(userNameOrMail);
+
+        if (user != null && user.getPassword().equals(password)){
+            //user.setLastTimeLogin(LocalDate.now());  //para actualizar la ultima vez que se hizo login a ahora.
+            return user;
+            //return true;
+        } else {
+            return null;
+            //return false;
+        }
     }
 
     public void addCandidature(User user, JobOffer jobOffer){
@@ -168,7 +182,7 @@ public class UserController {
     }
 
     public User getUserByName(String userName) {
-        User user = userDAOimpl.getUserByName(userName);
+        User user = userDAOimpl.getUserByNameOrMail(userName);
         return user;
     }
 

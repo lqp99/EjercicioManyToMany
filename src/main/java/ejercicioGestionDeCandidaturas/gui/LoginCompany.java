@@ -6,6 +6,7 @@
 package ejercicioGestionDeCandidaturas.gui;
 
 import ejercicioGestionDeCandidaturas.controllerServices.CompanyController;
+import ejercicioGestionDeCandidaturas.modelPojo.Company;
 import javax.swing.JOptionPane;
 
 /**
@@ -211,7 +212,10 @@ public class LoginCompany extends javax.swing.JFrame {
 
         if (companyController.getCompanyByName(name) != null && companyController.getCompanyByName(name).getPassword().equals(password)) {
             JOptionPane.showMessageDialog(null, "Bienvenido al Sistema " + name, "LOGIN CORRECTO", JOptionPane.INFORMATION_MESSAGE);
-            InfoCompany infoCompany = new InfoCompany();
+            
+            Company company = new Company(name, password);
+            
+            InfoCompany infoCompany = new InfoCompany(this.companyController, company);
             infoCompany.setVisible(true);
             dispose();
         } else {

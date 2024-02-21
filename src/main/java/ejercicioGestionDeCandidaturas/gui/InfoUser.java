@@ -14,15 +14,16 @@ import ejercicioGestionDeCandidaturas.modelPojo.User;
  */
 public class InfoUser extends javax.swing.JFrame {
 
-    private static final UserController userController = new UserController();
+    private final UserController userController;
     
     private final User user;
     
     /**
      * Creates new form InfoUser
      */
-    public InfoUser(User user) {
+    public InfoUser(UserController userController, User user) {
         initComponents();
+        this.userController = userController;
         this.user = user;
     }
 
