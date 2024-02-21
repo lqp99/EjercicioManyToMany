@@ -9,18 +9,18 @@ import ejercicioGestionDeCandidaturas.modelPojo.User;
 import java.util.ArrayList;
 
 public class CompanyController {
-    private static final CompanyDAOimpl companyDAOimpl = new CompanyDAOimpl();
+    private final CompanyDAOimpl companyDAOimpl = new CompanyDAOimpl();
 
 
     //metodos
-    public static void createCompany(Company company) {
-        companyDAOimpl.createCompany(company);
+    public void createCompany(Company company) {
+        this.companyDAOimpl.createCompany(company);
     }
 
     public Company createCompany(String name, String description) {
         Company company = new Company(name, description);
 
-        companyDAOimpl.createCompany(company);  //añado la empresa a la database.
+        this.companyDAOimpl.createCompany(company);  //añado la empresa a la database.
 
         return company;  //devolvemos la company.
     }
@@ -29,7 +29,7 @@ public class CompanyController {
         Company company = new Company();  //creo la compañía.
         company.setName(name);  //setteo el nombre
 
-        companyDAOimpl.createCompany(company);  //añado la empresa a la database.
+        this.companyDAOimpl.createCompany(company);  //añado la empresa a la database.
 
         return company;  //devolvemos la company.
     }
@@ -37,13 +37,13 @@ public class CompanyController {
     public Company createCompany(String name, String description, String password) {
         Company company = new Company(name, description, password);
 
-        companyDAOimpl.createCompany(company);  //añado la empresa a la database.
+        this.companyDAOimpl.createCompany(company);  //añado la empresa a la database.
 
         return company;  //devolvemos la company.
     }
 
     public void removeCompany(Company company) {
-        companyDAOimpl.removeCompany(company);
+        this.companyDAOimpl.removeCompany(company);
     }
 
     public void printCompanyInfo(Company company) {
@@ -59,11 +59,11 @@ public class CompanyController {
         company.getJobOffers().add(jobOffer);  //en company, cogemos la lista de JobOffers y se añade el jobOffer que nos están pasando.
         jobOffer.setCompany(company);  //se settea la compañía.
 
-        companyDAOimpl.updateCompany(company);  //actualizamos la compañía para que se guarden los cambios.
+        this.companyDAOimpl.updateCompany(company);  //actualizamos la compañía para que se guarden los cambios.
     }
 
     public Company getCompanyByName(String companyName) {
-        Company company = companyDAOimpl.getCompanyByName(companyName);
+        Company company = this.companyDAOimpl.getCompanyByName(companyName);
         return company;
     }
 }

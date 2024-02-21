@@ -188,7 +188,7 @@ public class LoginUser extends javax.swing.JFrame {
         String name = this.jTextFieldName.getText();
         String password = new String(this.jPasswordField.getPassword());
         
-        if (this.userController.getUserByName(name) != null && this.userController.getUserByName(name).getPassword().equals(password)) {
+        if (this.userController.login(name, password) != null) {
             JOptionPane.showMessageDialog(null, "Bienvenido al Sistema " + name, "LOGIN CORRECTO", JOptionPane.INFORMATION_MESSAGE);
             
             User user = this.userController.getUserByName(name);  //nos guardamos el user que inicia sesión.
@@ -197,21 +197,9 @@ public class LoginUser extends javax.swing.JFrame {
             infoUser.setVisible(true);
             dispose();  //para que se cierre la página actual.
         } else {
-            JOptionPane.showMessageDialog(null, "Nombre de usuario o contraseña incorrectos", "ERROR AL LOGEARSE", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Nombre de usuario o contraseña incorrectos", "ERROR AL HACER LOGIN", JOptionPane.ERROR_MESSAGE);
         }
-
         
-//        if(nombreUser.getText().equals("alumno") && contra.equals("1234")) {
-//					dispose();
-//					JOptionPane.showMessageDialog(null, "Bienvenido al Sistema", "DENTRO", JOptionPane.INFORMATION_MESSAGE);
-//					Principal p = new Principal();
-//					p.setVisible(true);
-//				} else {
-//					JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos", "ERROR", JOptionPane.ERROR_MESSAGE);
-//					nombreUser.setText("");
-//					password.setText("");
-//					nombreUser.requestFocus();
-//				}
     }//GEN-LAST:event_loginUserActionPerformed
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed

@@ -16,14 +16,14 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class UserController {
-    private static final UserDAOimpl userDAOimpl= new UserDAOimpl();
+    private final UserDAOimpl userDAOimpl= new UserDAOimpl();
 
 
     //metodos
     public User createUser(String name, String mail, String description, int telephone){
         User user = new User(name, mail, description, telephone);  //creamos el user pasandole todos los datos por el constructor.
 
-        userDAOimpl.createUser(user);  //creamos el usuario.
+        this.userDAOimpl.createUser(user);  //creamos el usuario.
 
         return user;  //devolvemos el user.
     }
@@ -31,17 +31,17 @@ public class UserController {
     public User createUser(String name, String mail, String description, int telephone, String password){
         User user = new User(name, mail, description, telephone, password);  //creamos el user pasandole todos los datos por el constructor.
 
-        userDAOimpl.createUser(user);  //creamos el usuario.
+        this.userDAOimpl.createUser(user);  //creamos el usuario.
 
         return user;  //devolvemos el user.
     }
 
     public void createUser(User user){
-        userDAOimpl.createUser(user);
+        this.userDAOimpl.createUser(user);
     }
 
     public void removeUser(User user){
-        userDAOimpl.removeUser(user);
+        this.userDAOimpl.removeUser(user);
     }
 
     public void printUserInfo(User user) {
@@ -80,7 +80,7 @@ public class UserController {
 
         jobOffer.setCandidature(candidature);  //setteamos la candidature.
 
-        userDAOimpl.updateUser(user);  //actualizamos el usuario para que se guarden los cambios.
+        this.userDAOimpl.updateUser(user);  //actualizamos el usuario para que se guarden los cambios.
     }
 
     public void addCandidature(User user, JobOffer jobOffer, String cv, String cover_letter) {
@@ -93,7 +93,15 @@ public class UserController {
 
         jobOffer.setCandidature(candidature);  //setteamos la candidature.
 
-        userDAOimpl.updateUser(user);  //actualizamos el usuario para que se guarden los cambios.
+        this.userDAOimpl.updateUser(user);  //actualizamos el usuario para que se guarden los cambios.
+    }
+
+    public void addAcademicInfo(User user, AcademicInfo academicInfo) {
+        user.getAcademicInfos().add(academicInfo);  //en user, cogemos la lista que tiene de academicInfos y añadimos la academicInfo que nos pasan.
+
+        academicInfo.setUser(user);  //setteamos el user.
+
+        this.userDAOimpl.updateUser(user);  //actualizamos el usuario para que se guarden los cambios.
     }
 
     public void addAcademicInfo(User user, AcademicInfo academicInfo, Institution institution) {
@@ -105,17 +113,21 @@ public class UserController {
         institution.getUsers().add(user);  //en institution, cogemos la lista que tiene de users y añadimos el user que nos pasan.
         institution.getAcademicInfos().add(academicInfo);  //en institution, cogemos la lista que tiene de academicInfos y añadimos la academicInfo que nos pasan.
 
-        userDAOimpl.updateUser(user);  //actualizamos el usuario para que se guarden los cambios.
+        this.userDAOimpl.updateUser(user);  //actualizamos el usuario para que se guarden los cambios.
+    }
+
+    public List<AcademicInfo> getAllAcademicInfo(User user) {
+        return user.getAcademicInfos();
     }
 
     public void addSkill(User user, String skillName) {
         Skill skill = new Skill(skillName);  //creo una skill.
-        List<Skill> skills = userDAOimpl.getUserSkills(user);  //creo una List con todas las skills que tiene el usuario.
+        List<Skill> skills = this.userDAOimpl.getUserSkills(user);  //creo una List con todas las skills que tiene el usuario.
 
         if (!skills.contains(skill)) {  //si la lista de skills no contiene la Skill que le pasamos....
             user.getSkills().add(skill);  //en user, cogemos la lista que tiene de skills y añadimos la skill que hemos creado.
             skill.getUsers().add(user);  //en skill, cogemos la lista que tiene de users y añadimos el user que nos pasan.
-            userDAOimpl.updateUser(user);  //actualizamos el usuario para que se guarden los cambios.
+            this.userDAOimpl.updateUser(user);  //actualizamos el usuario para que se guarden los cambios.
         }
 
 //        for (Skill s : skills) {  //nos recorremos esa List.
@@ -132,7 +144,7 @@ public class UserController {
 
         skill.getUsers().add(user);  //en skill, cogemos la lista que tiene de users y añadimos el user que nos pasan.
 
-        userDAOimpl.updateUser(user);  //actualizamos el usuario para que se guarden los cambios.
+        this.userDAOimpl.updateUser(user);  //actualizamos el usuario para que se guarden los cambios.
     }
 
     public void addCandidature(User user, Candidature candidature, JobOffer jobOffer) {
@@ -143,7 +155,7 @@ public class UserController {
 
         jobOffer.setCandidature(candidature);  //setteamos la candidature.
 
-        userDAOimpl.updateUser(user);  //actualizamos el usuario para que se guarden los cambios.
+        this.userDAOimpl.updateUser(user);  //actualizamos el usuario para que se guarden los cambios.
     }
 
     public void addCandidature(User user, Candidature candidature) {
@@ -151,15 +163,7 @@ public class UserController {
 
         candidature.setUser(user);  //setteamos el user.
 
-        userDAOimpl.updateUser(user);  //actualizamos el usuario para que se guarden los cambios.
-    }
-
-    public void addAcademicInfo(User user, AcademicInfo academicInfo) {
-        user.getAcademicInfos().add(academicInfo);  //en user, cogemos la lista que tiene de academicInfos y añadimos la academicInfo que nos pasan.
-
-        academicInfo.setUser(user);  //setteamos el user.
-
-        userDAOimpl.updateUser(user);  //actualizamos el usuario para que se guarden los cambios.
+        this.userDAOimpl.updateUser(user);  //actualizamos el usuario para que se guarden los cambios.
     }
 
     public void addJobExperience(User user, LaboralExperience laboralExperience) {
@@ -167,7 +171,7 @@ public class UserController {
 
         laboralExperience.setUser(user);  //setteamos el user.
 
-        userDAOimpl.updateUser(user);  //actualizamos el usuario para que se guarden los cambios.
+        this.userDAOimpl.updateUser(user);  //actualizamos el usuario para que se guarden los cambios.
     }
 
     public void addJobExperience(User user, LaboralExperience laboralExperience, Company company) {
@@ -178,19 +182,19 @@ public class UserController {
 
         company.getLaboralExperiences().add(laboralExperience);  //en company, cogemos la lista que tiene de laboralExperiences y añadimos la laboralExperience que nos pasan.
 
-        userDAOimpl.updateUser(user);  //actualizamos el usuario para que se guarden los cambios.
+        this.userDAOimpl.updateUser(user);  //actualizamos el usuario para que se guarden los cambios.
     }
 
     public User getUserByName(String userName) {
-        User user = userDAOimpl.getUserByNameOrMail(userName);
+        User user = this.userDAOimpl.getUserByNameOrMail(userName);
         return user;
     }
 
     public void getUserSkills(User user) {
-        userDAOimpl.getUserSkills(user);
+        this.userDAOimpl.getUserSkills(user);
     }
 
     public void getUserLaboralExperience(User user) {
-        userDAOimpl.getUserLaboralExperience(user);
+        this.userDAOimpl.getUserLaboralExperience(user);
     }
 }
