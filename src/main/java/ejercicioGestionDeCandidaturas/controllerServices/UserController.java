@@ -61,7 +61,7 @@ public class UserController {
         User user = this.userDAOimpl.getUserByNameOrMail(userNameOrMail);
 
         if (user != null && user.getPassword().equals(password)){
-            //user.setLastTimeLogin(LocalDate.now());  //para actualizar la ultima vez que se hizo login a ahora.
+            user.setLastTimeLogin(LocalDate.now());  //para actualizar la ultima vez que se hizo login a la hora actual.
             return user;
             //return true;
         } else {

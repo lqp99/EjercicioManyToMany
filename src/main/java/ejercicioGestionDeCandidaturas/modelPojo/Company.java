@@ -2,6 +2,7 @@ package ejercicioGestionDeCandidaturas.modelPojo;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +22,9 @@ public class Company {
 
     @Column(name = "password")
     private String password;
+
+    @Column(name = "last_time_login")
+    private LocalDate LastTimeLogin;
 
     @OneToMany(  //uno a muchos.
             mappedBy = "company",  //mapeamos el valor de la variable de la otra clase que hace la relación con esta clase.
@@ -64,11 +68,12 @@ public class Company {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
+                ", password='" + password + '\'' +
+                ", LastTimeLogin=" + LastTimeLogin +
                 ", laboralExperiences=" + laboralExperiences +
                 ", jobOffers=" + jobOffers +
                 '}';
     }
-
 
     //getters and setters
     public long getId() {
@@ -101,6 +106,14 @@ public class Company {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public LocalDate getLastTimeLogin() {
+        return LastTimeLogin;
+    }
+
+    public void setLastTimeLogin(LocalDate lastTimeLogin) {
+        LastTimeLogin = lastTimeLogin;
     }
 
     public List<LaboralExperience> getLaboralExperiences() {

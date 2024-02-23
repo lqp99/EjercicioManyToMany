@@ -54,7 +54,7 @@ public class LoginUser extends javax.swing.JFrame {
         jLabelUsers.setText("Users");
 
         jTextFieldName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextFieldName.setText("Nombre de Usuario");
+        jTextFieldName.setText("Nombre de Usuario o Mail");
         jTextFieldName.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTextFieldNameMouseClicked(evt);
@@ -105,7 +105,7 @@ public class LoginUser extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Nombre de usuario:");
+        jLabel1.setText("Username o mail:");
 
         jLabel2.setText("Contraseña:");
 

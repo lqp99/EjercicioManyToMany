@@ -9,6 +9,7 @@ import ejercicioGestionDeCandidaturas.controllerServices.UserController;
 import ejercicioGestionDeCandidaturas.modelPojo.AcademicInfo;
 import ejercicioGestionDeCandidaturas.modelPojo.User;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -262,6 +263,7 @@ public class InfoUser extends javax.swing.JFrame {
 
     private void salirCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirCuentaActionPerformed
         // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Saliendo de la cuenta de usuario", "SALIENDO...", JOptionPane.ERROR_MESSAGE);
         LoginUser lu = new LoginUser();
         lu.setVisible(true);
         dispose();  //para que se cierre la página actual.

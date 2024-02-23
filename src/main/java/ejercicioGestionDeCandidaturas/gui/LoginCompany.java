@@ -209,30 +209,18 @@ public class LoginCompany extends javax.swing.JFrame {
         // TODO add your handling code here:
         String name = this.jTextFieldName.getText();
         String password = new String(this.jPasswordField.getPassword());
-
-        if (companyController.getCompanyByName(name) != null && companyController.getCompanyByName(name).getPassword().equals(password)) {
+        
+        if (this.companyController.login(name, password) != null) {
             JOptionPane.showMessageDialog(null, "Bienvenido al Sistema " + name, "LOGIN CORRECTO", JOptionPane.INFORMATION_MESSAGE);
             
-            Company company = new Company(name, password);
+            Company company = this.companyController.getCompanyByName(name);  //nos guardamos el user que inicia sesión.
             
             InfoCompany infoCompany = new InfoCompany(this.companyController, company);
             infoCompany.setVisible(true);
-            dispose();
+            dispose();  //para que se cierre la página actual.
         } else {
-            JOptionPane.showMessageDialog(null, "Nombre de empresa o contraseña incorrectos", "ERROR AL LOGEARSE", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Nombre de empresa o contraseña incorrectos", "ERROR AL HACER LOGIN", JOptionPane.ERROR_MESSAGE);
         }
-
-        //        if(nombreUser.getText().equals("alumno") && contra.equals("1234")) {
-            //					dispose();
-            //					JOptionPane.showMessageDialog(null, "Bienvenido al Sistema", "DENTRO", JOptionPane.INFORMATION_MESSAGE);
-            //					Principal p = new Principal();
-            //					p.setVisible(true);
-            //				} else {
-            //					JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos", "ERROR", JOptionPane.ERROR_MESSAGE);
-            //					nombreUser.setText("");
-            //					password.setText("");
-            //					nombreUser.requestFocus();
-            //				}
     }//GEN-LAST:event_loginCompanyActionPerformed
 
     private void registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerActionPerformed

@@ -1,12 +1,10 @@
 package ejercicioGestionDeCandidaturas.controllerServices;
 
 import ejercicioGestionDeCandidaturas.implementations.CompanyDAOimpl;
-import ejercicioGestionDeCandidaturas.implementations.JobOfferDAOimpl;
 import ejercicioGestionDeCandidaturas.modelPojo.Company;
 import ejercicioGestionDeCandidaturas.modelPojo.JobOffer;
-import ejercicioGestionDeCandidaturas.modelPojo.User;
 
-import java.util.ArrayList;
+import java.time.LocalDate;
 
 public class CompanyController {
     private final CompanyDAOimpl companyDAOimpl = new CompanyDAOimpl();
@@ -53,6 +51,19 @@ public class CompanyController {
         System.out.println("\tDescription: " + company.getDescription());
         System.out.println("\tLaboral Experiences: " + company.getLaboralExperiences());
         System.out.println("\tJob Offers: " + company.getJobOffers());
+    }
+
+    public Company login(String companyName, String password) {
+        Company company = this.companyDAOimpl.getCompanyByName(companyName);
+
+        if (company != null && company.getPassword().equals(password)){
+            company.setLastTimeLogin(LocalDate.now());  //para actualizar la ultima vez que se hizo login a la hora actual.
+            return company;
+            //return true;
+        } else {
+            return null;
+            //return false;
+        }
     }
 
     public void addJobOffer(Company company, JobOffer jobOffer) {

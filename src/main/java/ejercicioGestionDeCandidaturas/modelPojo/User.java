@@ -2,6 +2,7 @@ package ejercicioGestionDeCandidaturas.modelPojo;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +32,9 @@ public class User {
 
     @Column(name = "password")
     private String password;
+
+    @Column(name = "last_time_login")
+    private LocalDate LastTimeLogin;
 
     @ManyToMany(  //muchos a muchos.
             mappedBy = "users",  //mapeamos el valor de la variable de la otra clase que hace la relación con esta clase.
@@ -80,6 +84,7 @@ public class User {
         this.mail = mail;
         this.description = description;
         this.telephone = telephone;
+        this.LastTimeLogin = LocalDate.now();
     }
 
     public User(String name, String mail, String description, int telephone, String password) {
@@ -88,7 +93,9 @@ public class User {
         this.description = description;
         this.telephone = telephone;
         this.password = password;
+        this.LastTimeLogin = LocalDate.now();
     }
+
 
     //toString
     @Override
@@ -99,6 +106,8 @@ public class User {
                 ", mail='" + mail + '\'' +
                 ", description='" + description + '\'' +
                 ", telephone=" + telephone +
+                ", password='" + password + '\'' +
+                ", LastTimeLogin=" + LastTimeLogin +
                 ", skills=" + skills +
                 ", candidatures=" + candidatures +
                 ", laboralExperiences=" + laboralExperiences +
@@ -154,6 +163,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public LocalDate getLastTimeLogin() {
+        return LastTimeLogin;
+    }
+
+    public void setLastTimeLogin(LocalDate lastTimeLogin) {
+        LastTimeLogin = lastTimeLogin;
     }
 
     public List<Skill> getSkills() {
