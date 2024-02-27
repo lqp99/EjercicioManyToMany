@@ -321,9 +321,6 @@ public class CreateUser extends javax.swing.JFrame {
                 dispose();  //para que se cierre la página actual.
             }
         }
-        
-        
-        
     }//GEN-LAST:event_createUserActionPerformed
 
     private void exit2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit2ActionPerformed

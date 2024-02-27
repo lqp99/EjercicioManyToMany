@@ -17,23 +17,46 @@ public class User {
     @Column(name = "id")  //para que la columna de la tabla se llame como le digas.
     private long id;
 
-    @Column(name = "name")  //para que la columna de la tabla se llame como le digas.
-//    @Column(nullable = false)  //para que este atributo no puede ser nulo y se tenga que insertar obligatoriamente.
+    @Column(
+            name = "name",  //para que la columna de la tabla se llame como le digas.
+            unique = true,  //individualmente no se puede repetir este atributo.
+            nullable = false  //no puede ser null.
+    )
     private String name;
 
-    @Column(name = "mail")
+    @Column(
+            name = "mail",  //para que la columna de la tabla se llame como le digas.
+            unique = true,  //individualmente no se puede repetir este atributo.
+            nullable = false  //no puede ser null.
+    )
     private String mail;
 
-    @Column(name = "description")
+    @Column(
+            name = "description"  //para que la columna de la tabla se llame como le digas.
+            //unique = true,  //individualmente no se puede repetir este atributo.
+            //nullable = false  //no puede ser null.
+    )
     private String description;
 
-    @Column(name = "telephone")
+    @Column(
+            name = "telephone",  //para que la columna de la tabla se llame como le digas.
+            unique = true,  //individualmente no se puede repetir este atributo.
+            nullable = false  //no puede ser null.
+    )
     private int telephone;
 
-    @Column(name = "password")
+    @Column(
+            name = "password",  //para que la columna de la tabla se llame como le digas.
+            //unique = true,  //individualmente no se puede repetir este atributo.
+            nullable = false  //no puede ser null.
+    )
     private String password;
 
-    @Column(name = "last_time_login")
+    @Column(
+            name = "last_time_login"  //para que la columna de la tabla se llame como le digas.
+            //unique = true,  //individualmente no se puede repetir este atributo.
+            //nullable = false  //no puede ser null.
+    )
     private LocalDate LastTimeLogin;
 
     @ManyToMany(  //muchos a muchos.

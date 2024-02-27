@@ -27,7 +27,8 @@ public class Candidature {
             cascade = {  //al ser "CascadeType.PERSIST / MERGE" cada vez que se cree y actualice un "ObjetoDeEstaClase", se hace en cascada y se modifica la referencia primero esta clase y luego en la que está referenciada.
                     CascadeType.PERSIST,
                     CascadeType.MERGE
-            })
+            }
+    )
     private User user;
 
     @OneToMany(  //uno a muchos.

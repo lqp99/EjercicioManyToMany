@@ -56,28 +56,39 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="exit2" min="-2" pref="37" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="exit2" min="-2" pref="37" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="jTextFieldName" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="name1" alignment="0" min="-2" pref="220" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jTextFieldDescription" alignment="0" pref="220" max="32767" attributes="0"/>
+                                  <Component id="description" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="password" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="confirmPassword" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jPasswordField2" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jPasswordField" alignment="0" min="-2" pref="220" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="0" pref="47" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jTextFieldDescription" alignment="0" max="32767" attributes="0"/>
-                          <Component id="description" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTextFieldName" alignment="0" max="32767" attributes="0"/>
-                          <Component id="name" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
-                          <Component id="telephone1" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jPasswordField" alignment="0" min="-2" pref="220" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
-                          <Component id="createCompany" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace pref="53" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
+                  <Component id="createCompany" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -88,21 +99,25 @@
                   <Component id="exit2" min="-2" pref="32" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" pref="54" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="name" min="-2" pref="23" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                  <Component id="name1" min="-2" pref="23" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jTextFieldName" min="-2" pref="29" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="description" min="-2" pref="23" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jTextFieldDescription" min="-2" pref="29" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="telephone1" min="-2" pref="23" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="password" min="-2" pref="23" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jPasswordField" min="-2" pref="30" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                  <Component id="jPasswordField" min="-2" pref="29" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="confirmPassword" min="-2" pref="23" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jPasswordField2" min="-2" pref="29" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="createCompany" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="140" max="32767" attributes="0"/>
+                  <EmptySpace pref="94" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -121,20 +136,6 @@
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Create Company"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="name">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Name:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldName">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Introduce el Nombre"/>
-          </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTextFieldNameMouseClicked"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldNameActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="description">
           <Properties>
@@ -167,14 +168,42 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exit2ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="telephone1">
+        <Component class="javax.swing.JLabel" name="name1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Password:"/>
+            <Property name="text" type="java.lang.String" value="Name: *"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextFieldName">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Introduce el Nombre"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTextFieldNameMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldNameActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="confirmPassword">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Confirm Password: *"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="jPasswordField2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Introduce la contrase&#xf1;a"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPasswordField2MouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jPasswordField2ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="password">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Password: *"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JPasswordField" name="jPasswordField">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jPasswordField"/>
+            <Property name="text" type="java.lang.String" value="Introduce la contrase&#xf1;a"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPasswordFieldMouseClicked"/>

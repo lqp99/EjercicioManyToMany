@@ -1,6 +1,6 @@
 package ejercicioGestionDeCandidaturas.controllerServices;
 
-import ejercicioGestionDeCandidaturas.implementations.CompanyDAOimpl;
+import ejercicioGestionDeCandidaturas.impl.CompanyDAOimpl;
 import ejercicioGestionDeCandidaturas.modelPojo.Company;
 import ejercicioGestionDeCandidaturas.modelPojo.JobOffer;
 
@@ -13,12 +13,14 @@ public class CompanyController {
     //metodos
     public void createCompany(Company company) {
         this.companyDAOimpl.createCompany(company);
+        System.out.println("Company con nombre \"" + company.getName() + "\" insertada.");
     }
 
     public Company createCompany(String name, String description) {
         Company company = new Company(name, description);
 
         this.companyDAOimpl.createCompany(company);  //añado la empresa a la database.
+        System.out.println("Company con nombre \"" + company.getName() + "\" insertada.");
 
         return company;  //devolvemos la company.
     }
@@ -28,6 +30,7 @@ public class CompanyController {
         company.setName(name);  //setteo el nombre
 
         this.companyDAOimpl.createCompany(company);  //añado la empresa a la database.
+        System.out.println("Company con nombre \"" + company.getName() + "\" insertada.");
 
         return company;  //devolvemos la company.
     }
@@ -36,12 +39,19 @@ public class CompanyController {
         Company company = new Company(name, description, password);
 
         this.companyDAOimpl.createCompany(company);  //añado la empresa a la database.
+        System.out.println("Company con nombre \"" + company.getName() + "\" insertada.");
 
         return company;  //devolvemos la company.
     }
 
+    public void updateCompany(Company company) {
+        this.companyDAOimpl.updateCompany(company);
+        System.out.println("Company con nombre \"" + company.getName() + "\" actualizada.");
+    }
+
     public void removeCompany(Company company) {
         this.companyDAOimpl.removeCompany(company);
+        System.out.println("Company con nombre \"" + company.getName() + "\" eliminada.");
     }
 
     public void printCompanyInfo(Company company) {

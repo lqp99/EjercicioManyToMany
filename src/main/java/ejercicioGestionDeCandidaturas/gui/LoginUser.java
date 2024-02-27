@@ -189,7 +189,7 @@ public class LoginUser extends javax.swing.JFrame {
         String password = new String(this.jPasswordField.getPassword());
         
         if (this.userController.login(name, password) != null) {
-            JOptionPane.showMessageDialog(null, "Bienvenido al Sistema " + name, "LOGIN CORRECTO", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Bienvenido al Sistema" + name, "LOGIN CORRECTO", JOptionPane.INFORMATION_MESSAGE);
             
             User user = this.userController.getUserByName(name);  //nos guardamos el user que inicia sesión.
             

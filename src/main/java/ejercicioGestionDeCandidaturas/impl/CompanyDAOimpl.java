@@ -1,4 +1,4 @@
-package ejercicioGestionDeCandidaturas.implementations;
+package ejercicioGestionDeCandidaturas.impl;
 
 import ejercicioGestionDeCandidaturas.interfacesDAO.CompanyDAO;
 import ejercicioGestionDeCandidaturas.modelPojo.*;
@@ -21,7 +21,6 @@ public class CompanyDAOimpl implements CompanyDAO {
             tx = session.beginTransaction();
 
             session.persist(company);  //esto es como hacer un insert para insertar el libro a la tabla.
-            System.out.println("Company con nombre \"" + company.getName() + "\" insertada.");
 
             tx.commit();  //para completar la transacción.
         } catch (Exception ex) {
@@ -40,7 +39,6 @@ public class CompanyDAOimpl implements CompanyDAO {
             tx = session.beginTransaction();
 
             session.merge(company);  //esto es como hacer un update para actualizar el producto a la tabla.
-            System.out.println("Company con id \"" + company.getId() + "\" actualizada.");
 
             tx.commit();
         } catch (Exception ex) {
@@ -59,7 +57,6 @@ public class CompanyDAOimpl implements CompanyDAO {
             tx = session.beginTransaction();  //inicializamos la transacción.
 
             session.remove(company);  //si es distinto de null (existe el estudiante) que elimine el estudiante.
-            System.out.println("Company con nombre \"" + company.getName() + "\" eliminada.");
 
             tx.commit();  //para completar la transacción.
         } catch (Exception ex) {

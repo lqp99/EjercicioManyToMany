@@ -1,4 +1,4 @@
-package ejercicioGestionDeCandidaturas.implementations;
+package ejercicioGestionDeCandidaturas.impl;
 
 import ejercicioGestionDeCandidaturas.enumerations.WorkDayType;
 import ejercicioGestionDeCandidaturas.interfacesDAO.JobOfferDAO;

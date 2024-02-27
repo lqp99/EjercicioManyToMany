@@ -9,7 +9,7 @@ userService
  */
 package ejercicioGestionDeCandidaturas.controllerServices;
 
-import ejercicioGestionDeCandidaturas.implementations.UserDAOimpl;
+import ejercicioGestionDeCandidaturas.impl.UserDAOimpl;
 import ejercicioGestionDeCandidaturas.modelPojo.*;
 
 import java.time.LocalDate;
@@ -24,6 +24,7 @@ public class UserController {
         User user = new User(name, mail, description, telephone);  //creamos el user pasandole todos los datos por el constructor.
 
         this.userDAOimpl.createUser(user);  //creamos el usuario.
+        System.out.println("User con nombre \"" + user.getName() + "\" insertado.");
 
         return user;  //devolvemos el user.
     }
@@ -32,16 +33,24 @@ public class UserController {
         User user = new User(name, mail, description, telephone, password);  //creamos el user pasandole todos los datos por el constructor.
 
         this.userDAOimpl.createUser(user);  //creamos el usuario.
+        System.out.println("User con nombre \"" + user.getName() + "\" insertado.");
 
         return user;  //devolvemos el user.
     }
 
     public void createUser(User user){
         this.userDAOimpl.createUser(user);
+        System.out.println("User con nombre \"" + user.getName() + "\" insertado.");
+    }
+
+    public void updateUser(User user) {
+        this.userDAOimpl.updateUser(user);
+        System.out.println("User con nombre \"" + user.getName() + "\" actualizado.");
     }
 
     public void removeUser(User user){
         this.userDAOimpl.removeUser(user);
+        System.out.println("User con nombre \"" + user.getName() + "\" eliminado.");
     }
 
     public void printUserInfo(User user) {

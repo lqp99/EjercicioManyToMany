@@ -36,12 +36,14 @@ public class CreateCompany extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         createCompany = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        name = new javax.swing.JLabel();
-        jTextFieldName = new javax.swing.JTextField();
         description = new javax.swing.JLabel();
         jTextFieldDescription = new javax.swing.JTextField();
         exit2 = new javax.swing.JButton();
-        telephone1 = new javax.swing.JLabel();
+        name1 = new javax.swing.JLabel();
+        jTextFieldName = new javax.swing.JTextField();
+        confirmPassword = new javax.swing.JLabel();
+        jPasswordField2 = new javax.swing.JPasswordField();
+        password = new javax.swing.JLabel();
         jPasswordField = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -59,20 +61,6 @@ public class CreateCompany extends javax.swing.JFrame {
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Create Company");
-
-        name.setText("Name:");
-
-        jTextFieldName.setText("Introduce el Nombre");
-        jTextFieldName.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextFieldNameMouseClicked(evt);
-            }
-        });
-        jTextFieldName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldNameActionPerformed(evt);
-            }
-        });
 
         description.setText("Description:");
 
@@ -98,9 +86,37 @@ public class CreateCompany extends javax.swing.JFrame {
             }
         });
 
-        telephone1.setText("Password:");
+        name1.setText("Name: *");
 
-        jPasswordField.setText("jPasswordField");
+        jTextFieldName.setText("Introduce el Nombre");
+        jTextFieldName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextFieldNameMouseClicked(evt);
+            }
+        });
+        jTextFieldName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldNameActionPerformed(evt);
+            }
+        });
+
+        confirmPassword.setText("Confirm Password: *");
+
+        jPasswordField2.setText("Introduce la contraseña");
+        jPasswordField2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPasswordField2MouseClicked(evt);
+            }
+        });
+        jPasswordField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField2ActionPerformed(evt);
+            }
+        });
+
+        password.setText("Password: *");
+
+        jPasswordField.setText("Introduce la contraseña");
         jPasswordField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPasswordFieldMouseClicked(evt);
@@ -117,24 +133,31 @@ public class CreateCompany extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(exit2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(exit2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jTextFieldName, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(name1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jTextFieldDescription, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                                .addComponent(description, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(password, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(confirmPassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jPasswordField2, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jPasswordField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 47, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextFieldDescription)
-                        .addComponent(description, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextFieldName)
-                        .addComponent(name, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(telephone1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(createCompany)))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addGap(113, 113, 113)
+                .addComponent(createCompany)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,21 +166,25 @@ public class CreateCompany extends javax.swing.JFrame {
                 .addComponent(exit2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(name1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldName, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(description, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(telephone1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(confirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(createCompany)
-                .addContainerGap(140, Short.MAX_VALUE))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -185,24 +212,37 @@ public class CreateCompany extends javax.swing.JFrame {
         String name = this.jTextFieldName.getText();
         String description = this.jTextFieldDescription.getText();
         String password = new String(this.jPasswordField.getPassword());
+        String confirmPassword = new String(this.jPasswordField2.getPassword());
         
-        if (!name.equals(null) || !description.equals(null) || !password.equals(null)) {
-            this.companyController.createCompany(name, description, password);
-            JOptionPane.showMessageDialog(null, "Bienvenido al Sistema " + name, "EMPRESA CREADA CORRECTAMENTE", JOptionPane.INFORMATION_MESSAGE);
-            
-            Company company = new Company(name, description, password);
-            
-            InfoCompany infoCompany = new InfoCompany(this.companyController, company);
-            infoCompany.setVisible(true);
-            dispose();
+        
+        
+        if (name.equals("Introduce el Nombre") || name.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Hay que introducir un Nombre obligatoriamente", "ERROR, NOMBRE NO INTRODUCIDO", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        if (description.equals("Introduce una Descripción")) {
+            description = "";
+        }
+        
+        if (password.equals("Introduce la contraseña") || password.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Hay que introducir una Contraseña obligatoriamente", "ERROR, PASSWORD NO INTRODUCIDO", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        if (confirmPassword.equals("Introduce la contraseña") || confirmPassword.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Hay que confirmar la Contraseña", "ERROR, PASSWORD NO CONFIRMADA", JOptionPane.ERROR_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(null, "No se han introducido datos correctos", "ERROR AL CREAR LA EMPRESA", JOptionPane.ERROR_MESSAGE);
+            if (!confirmPassword.equals(password)) {
+                JOptionPane.showMessageDialog(null, "Las Contraseñas no coinciden", "ERROR", JOptionPane.ERROR_MESSAGE);
+            } else {
+                Company company = new Company(name, description, password);
+                this.companyController.createCompany(company);
+                JOptionPane.showMessageDialog(null, "Bienvenido al Sistema " + name, "COMPAÑÍA CREADA CORRECTAMENTE", JOptionPane.INFORMATION_MESSAGE);
+                InfoCompany infoCompany = new InfoCompany(this.companyController, company);
+                infoCompany.setVisible(true);
+                dispose();  //para que se cierre la página actual.
+            }
         }
     }//GEN-LAST:event_createCompanyActionPerformed
-
-    private void jTextFieldNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldNameActionPerformed
 
     private void jTextFieldDescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDescriptionActionPerformed
         // TODO add your handling code here:
@@ -215,24 +255,37 @@ public class CreateCompany extends javax.swing.JFrame {
         lc.setVisible(true);
     }//GEN-LAST:event_exit2ActionPerformed
 
-    private void jPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldActionPerformed
+    private void jTextFieldDescriptionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldDescriptionMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordFieldActionPerformed
+        this.jTextFieldDescription.setText("");
+    }//GEN-LAST:event_jTextFieldDescriptionMouseClicked
 
     private void jTextFieldNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldNameMouseClicked
         // TODO add your handling code here:
         this.jTextFieldName.setText("");
     }//GEN-LAST:event_jTextFieldNameMouseClicked
 
-    private void jTextFieldDescriptionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldDescriptionMouseClicked
+    private void jTextFieldNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNameActionPerformed
         // TODO add your handling code here:
-        this.jTextFieldDescription.setText("");
-    }//GEN-LAST:event_jTextFieldDescriptionMouseClicked
+    }//GEN-LAST:event_jTextFieldNameActionPerformed
+
+    private void jPasswordField2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField2MouseClicked
+        // TODO add your handling code here:
+        this.jPasswordField2.setText("");
+    }//GEN-LAST:event_jPasswordField2MouseClicked
+
+    private void jPasswordField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField2ActionPerformed
 
     private void jPasswordFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordFieldMouseClicked
         // TODO add your handling code here:
         this.jPasswordField.setText("");
     }//GEN-LAST:event_jPasswordFieldMouseClicked
+
+    private void jPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -270,15 +323,17 @@ public class CreateCompany extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel confirmPassword;
     private javax.swing.JButton createCompany;
     private javax.swing.JLabel description;
     private javax.swing.JButton exit2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField;
+    private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JTextField jTextFieldDescription;
     private javax.swing.JTextField jTextFieldName;
-    private javax.swing.JLabel name;
-    private javax.swing.JLabel telephone1;
+    private javax.swing.JLabel name1;
+    private javax.swing.JLabel password;
     // End of variables declaration//GEN-END:variables
 }

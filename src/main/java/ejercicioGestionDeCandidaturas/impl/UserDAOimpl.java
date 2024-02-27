@@ -1,4 +1,4 @@
-package ejercicioGestionDeCandidaturas.implementations;
+package ejercicioGestionDeCandidaturas.impl;
 
 import ejercicioGestionDeCandidaturas.interfacesDAO.UserDAO;
 import ejercicioGestionDeCandidaturas.modelPojo.AcademicInfo;
@@ -23,7 +23,6 @@ public class UserDAOimpl implements UserDAO {
             tx = session.beginTransaction();
 
             session.persist(user);  //esto es como hacer un insert para insertar el libro a la tabla.
-            System.out.println("User con nombre \"" + user.getName() + "\" insertado.");
 
             tx.commit();  //para completar la transacción.
         } catch (Exception ex) {
@@ -42,7 +41,6 @@ public class UserDAOimpl implements UserDAO {
             tx = session.beginTransaction();
 
             session.merge(user);  //esto es como hacer un update para actualizar el producto a la tabla.
-            System.out.println("User con id \"" + user.getId() + "\" actualizado.");
 
             tx.commit();
         } catch (Exception ex) {
@@ -61,7 +59,6 @@ public class UserDAOimpl implements UserDAO {
             tx = session.beginTransaction();  //inicializamos la transacción.
 
             session.remove(user);  //si es distinto de null (existe el estudiante) que elimine el estudiante.
-            System.out.println("User con nombre \"" + user.getName() + "\" eliminado.");
 
             tx.commit();  //para completar la transacción.
         } catch (Exception ex) {

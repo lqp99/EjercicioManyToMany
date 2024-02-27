@@ -211,7 +211,7 @@ public class LoginCompany extends javax.swing.JFrame {
         String password = new String(this.jPasswordField.getPassword());
         
         if (this.companyController.login(name, password) != null) {
-            JOptionPane.showMessageDialog(null, "Bienvenido al Sistema " + name, "LOGIN CORRECTO", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Bienvenido al Sistema" + name, "LOGIN CORRECTO", JOptionPane.INFORMATION_MESSAGE);
             
             Company company = this.companyController.getCompanyByName(name);  //nos guardamos el user que inicia sesión.
             

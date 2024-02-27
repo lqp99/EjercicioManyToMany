@@ -14,16 +14,32 @@ public class Company {
     @Column(name = "id")  //para que la columna de la tabla se llame como le digas.
     private long id;
 
-    @Column(name = "name")
+    @Column(
+            name = "name",  //para que la columna de la tabla se llame como le digas.
+            unique = true,  //individualmente no se puede repetir este atributo.
+            nullable = false  //no puede ser null.
+    )
     private String name;
 
-    @Column(name = "description")
+    @Column(
+            name = "description"  //para que la columna de la tabla se llame como le digas.
+            //unique = true,  //individualmente no se puede repetir este atributo.
+            //nullable = false  //no puede ser null.
+    )
     private String description;
 
-    @Column(name = "password")
+    @Column(
+            name = "password",  //para que la columna de la tabla se llame como le digas.
+            //unique = true,  //individualmente no se puede repetir este atributo.
+            nullable = false  //no puede ser null.
+    )
     private String password;
 
-    @Column(name = "last_time_login")
+    @Column(
+            name = "last_time_login"  //para que la columna de la tabla se llame como le digas.
+            //unique = true,  //individualmente no se puede repetir este atributo.
+            //nullable = false  //no puede ser null.
+    )
     private LocalDate LastTimeLogin;
 
     @OneToMany(  //uno a muchos.
