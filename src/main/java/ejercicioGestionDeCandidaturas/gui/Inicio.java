@@ -45,7 +45,7 @@ public class Inicio extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logoLion.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ejercicioGestionDeCandidaturas/img/logoLion.png"))); // NOI18N
 
         exit.setBackground(new java.awt.Color(255, 102, 0));
         exit.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N

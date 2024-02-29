@@ -2,8 +2,8 @@ package ejercicioGestionDeCandidaturas.modelPojo;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 @Entity  //define que es una entidad dentro de una database.
@@ -57,7 +57,7 @@ public class User {
             //unique = true,  //individualmente no se puede repetir este atributo.
             //nullable = false  //no puede ser null.
     )
-    private LocalDate LastTimeLogin;
+    private Calendar lastTimeLogin;
 
     @ManyToMany(  //muchos a muchos.
             mappedBy = "users",  //mapeamos el valor de la variable de la otra clase que hace la relación con esta clase.
@@ -107,7 +107,7 @@ public class User {
         this.mail = mail;
         this.description = description;
         this.telephone = telephone;
-        this.LastTimeLogin = LocalDate.now();
+        this.lastTimeLogin = Calendar.getInstance();  //para poner la fecha y hora de ahora mismo.
     }
 
     public User(String name, String mail, String description, int telephone, String password) {
@@ -116,7 +116,7 @@ public class User {
         this.description = description;
         this.telephone = telephone;
         this.password = password;
-        this.LastTimeLogin = LocalDate.now();
+        this.lastTimeLogin = Calendar.getInstance();  //para poner la fecha y hora de ahora mismo.
     }
 
 
@@ -130,7 +130,7 @@ public class User {
                 ", description='" + description + '\'' +
                 ", telephone=" + telephone +
                 ", password='" + password + '\'' +
-                ", LastTimeLogin=" + LastTimeLogin +
+                ", lastTimeLogin=" + lastTimeLogin +
                 ", skills=" + skills +
                 ", candidatures=" + candidatures +
                 ", laboralExperiences=" + laboralExperiences +
@@ -188,12 +188,12 @@ public class User {
         this.password = password;
     }
 
-    public LocalDate getLastTimeLogin() {
-        return LastTimeLogin;
+    public Calendar getLastTimeLogin() {
+        return lastTimeLogin;
     }
 
-    public void setLastTimeLogin(LocalDate lastTimeLogin) {
-        LastTimeLogin = lastTimeLogin;
+    public void setLastTimeLogin(Calendar lastTimeLogin) {
+        this.lastTimeLogin = lastTimeLogin;
     }
 
     public List<Skill> getSkills() {

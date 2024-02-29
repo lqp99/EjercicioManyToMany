@@ -17,10 +17,10 @@ public class LaboralExperience {
     private String jobTitle;
 
     @Column(name = "init_date")
-    private LocalDate initialDate;
+    private Calendar initialDate;
 
     @Column(name = "end_date")
-    private LocalDate endDate;
+    private Calendar endDate;
 
     @Column(name = "current")
     private boolean current;
@@ -50,7 +50,7 @@ public class LaboralExperience {
     public LaboralExperience() {
     }
 
-    public LaboralExperience(String jobTitle, LocalDate initialDate, LocalDate endDate, boolean current, String descripcion, String location) {
+    public LaboralExperience(String jobTitle, Calendar initialDate, Calendar endDate, boolean current, String descripcion, String location) {
         this.jobTitle = jobTitle;
         this.initialDate = initialDate;
         this.endDate = endDate;
@@ -93,19 +93,19 @@ public class LaboralExperience {
         this.jobTitle = jobTitle;
     }
 
-    public LocalDate getInitialDate() {
+    public Calendar getInitialDate() {
         return initialDate;
     }
 
-    public void setInitialDate(LocalDate initialDate) {
+    public void setInitialDate(Calendar initialDate) {
         this.initialDate = initialDate;
     }
 
-    public LocalDate getEndDate() {
+    public Calendar getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
+    public void setEndDate(Calendar endDate) {
         this.endDate = endDate;
     }
 

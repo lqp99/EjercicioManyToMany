@@ -5,6 +5,7 @@ import ejercicioGestionDeCandidaturas.modelPojo.Company;
 import ejercicioGestionDeCandidaturas.modelPojo.JobOffer;
 
 import java.time.LocalDate;
+import java.util.Calendar;
 
 public class CompanyController {
     private final CompanyDAOimpl companyDAOimpl = new CompanyDAOimpl();
@@ -67,7 +68,7 @@ public class CompanyController {
         Company company = this.companyDAOimpl.getCompanyByName(companyName);
 
         if (company != null && company.getPassword().equals(password)){
-            company.setLastTimeLogin(LocalDate.now());  //para actualizar la ultima vez que se hizo login a la hora actual.
+            company.setLastTimeLogin(Calendar.getInstance());  //para actualizar la ultima vez que se hizo login a la hora actual.
             return company;
             //return true;
         } else {

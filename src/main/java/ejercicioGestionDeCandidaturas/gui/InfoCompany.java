@@ -7,6 +7,7 @@ package ejercicioGestionDeCandidaturas.gui;
 
 import ejercicioGestionDeCandidaturas.controllerServices.CompanyController;
 import ejercicioGestionDeCandidaturas.modelPojo.Company;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -35,32 +36,156 @@ public class InfoCompany extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         deleteCompany = new javax.swing.JButton();
+        salirCuenta = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTableExperience = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTableJobOffers = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jPanelAcademicInfo = new javax.swing.JPanel();
+        jButtonAddLaboralExperience = new javax.swing.JButton();
+        jButtonDeleteLaboralExperience = new javax.swing.JButton();
+        jButtonListAllLaboralExperience = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 102, 0));
 
-        deleteCompany.setText("DELETE COMPANY");
+        deleteCompany.setText("ELIMINAR CUENTA");
         deleteCompany.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteCompanyActionPerformed(evt);
             }
         });
 
+        salirCuenta.setText("SALIR DE LA CUENTA");
+        salirCuenta.setMaximumSize(new java.awt.Dimension(130, 23));
+        salirCuenta.setMinimumSize(new java.awt.Dimension(130, 23));
+        salirCuenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirCuentaActionPerformed(evt);
+            }
+        });
+
+        jTableExperience.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTableExperience);
+
+        jTableJobOffers.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(jTableJobOffers);
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel2.setText("Experience");
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel3.setText("Job Offers");
+
+        jButtonAddLaboralExperience.setText("Add Laboral Experience");
+        jButtonAddLaboralExperience.setActionCommand("Add Laboral Experience");
+
+        jButtonDeleteLaboralExperience.setText("Del Laboral Experience");
+        jButtonDeleteLaboralExperience.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteLaboralExperienceActionPerformed(evt);
+            }
+        });
+
+        jButtonListAllLaboralExperience.setText("List All Laboral Experiences");
+        jButtonListAllLaboralExperience.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonListAllLaboralExperienceActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelAcademicInfoLayout = new javax.swing.GroupLayout(jPanelAcademicInfo);
+        jPanelAcademicInfo.setLayout(jPanelAcademicInfoLayout);
+        jPanelAcademicInfoLayout.setHorizontalGroup(
+            jPanelAcademicInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAcademicInfoLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(jPanelAcademicInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButtonAddLaboralExperience, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonDeleteLaboralExperience, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonListAllLaboralExperience, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+        jPanelAcademicInfoLayout.setVerticalGroup(
+            jPanelAcademicInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAcademicInfoLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jButtonListAllLaboralExperience)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                .addComponent(jButtonAddLaboralExperience)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonDeleteLaboralExperience)
+                .addGap(14, 14, 14))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(1059, Short.MAX_VALUE)
-                .addComponent(deleteCompany)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(212, 1009, Short.MAX_VALUE)
+                        .addComponent(salirCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(deleteCompany, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(182, 182, 182)
+                                .addComponent(jLabel2))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(206, 206, 206)
+                                .addComponent(jLabel3)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanelAcademicInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(670, Short.MAX_VALUE)
-                .addComponent(deleteCompany, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanelAcademicInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 234, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(deleteCompany, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(salirCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -86,8 +211,30 @@ public class InfoCompany extends javax.swing.JFrame {
 
     private void deleteCompanyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteCompanyActionPerformed
         // TODO add your handling code here:
-
+        ConfirmacionDeleteCompany cdc = new ConfirmacionDeleteCompany(this.companyController, company);
+        cdc.setVisible(true);
     }//GEN-LAST:event_deleteCompanyActionPerformed
+
+    private void salirCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirCuentaActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Saliendo de la cuenta de empresa", "SALIENDO...", JOptionPane.ERROR_MESSAGE);
+        LoginCompany lc = new LoginCompany();
+        lc.setVisible(true);
+        dispose();  //para que se cierre la página actual.
+    }//GEN-LAST:event_salirCuentaActionPerformed
+
+    private void jButtonDeleteLaboralExperienceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteLaboralExperienceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonDeleteLaboralExperienceActionPerformed
+
+    private void jButtonListAllLaboralExperienceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListAllLaboralExperienceActionPerformed
+        // TODO add your handling code here:
+        //List<LaboralExperience> laboralExperiences = this.companyController.getAllLaboralExperience(this.company);
+
+        //        for (AcademicInfo academicInfo : academicInfos) {
+            //            this.jTableAcademicInfo.addC
+            //        }
+    }//GEN-LAST:event_jButtonListAllLaboralExperienceActionPerformed
 
     /**
      * @param args the command line arguments
@@ -126,6 +273,17 @@ public class InfoCompany extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton deleteCompany;
+    private javax.swing.JButton jButtonAddLaboralExperience;
+    private javax.swing.JButton jButtonDeleteLaboralExperience;
+    private javax.swing.JButton jButtonListAllLaboralExperience;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanelAcademicInfo;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable jTableExperience;
+    private javax.swing.JTable jTableJobOffers;
+    private javax.swing.JButton salirCuenta;
     // End of variables declaration//GEN-END:variables
 }

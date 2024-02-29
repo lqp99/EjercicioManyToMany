@@ -17,10 +17,10 @@ public class AcademicInfo {
     private String title;
 
     @Column(name = "init_date")
-    private LocalDate initialDate;
+    private Calendar initialDate;
 
     @Column(name = "end_date")
-    private LocalDate endDate;
+    private Calendar endDate;
 
     @Column(name = "current")
     private boolean current;
@@ -79,19 +79,19 @@ public class AcademicInfo {
         this.title = title;
     }
 
-    public LocalDate getInitialDate() {
+    public Calendar getInitialDate() {
         return initialDate;
     }
 
-    public void setInitialDate(LocalDate initialDate) {
+    public void setInitialDate(Calendar initialDate) {
         this.initialDate = initialDate;
     }
 
-    public LocalDate getEndDate() {
+    public Calendar getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
+    public void setEndDate(Calendar endDate) {
         this.endDate = endDate;
     }
 

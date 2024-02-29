@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 @Entity  //define que es una entidad dentro de una database.
@@ -40,7 +41,7 @@ public class Company {
             //unique = true,  //individualmente no se puede repetir este atributo.
             //nullable = false  //no puede ser null.
     )
-    private LocalDate LastTimeLogin;
+    private Calendar lastTimeLogin;
 
     @OneToMany(  //uno a muchos.
             mappedBy = "company",  //mapeamos el valor de la variable de la otra clase que hace la relación con esta clase.
@@ -68,12 +69,14 @@ public class Company {
     public Company(String name, String description) {
         this.name = name;
         this.description = description;
+        this.lastTimeLogin = Calendar.getInstance();  //para poner la fecha y hora de ahora mismo.
     }
 
     public Company(String name, String description, String password) {
         this.name = name;
         this.description = description;
         this.password = password;
+        this.lastTimeLogin = Calendar.getInstance();  //para poner la fecha y hora de ahora mismo.
     }
 
 
@@ -85,7 +88,7 @@ public class Company {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", password='" + password + '\'' +
-                ", LastTimeLogin=" + LastTimeLogin +
+                ", lastTimeLogin=" + lastTimeLogin +
                 ", laboralExperiences=" + laboralExperiences +
                 ", jobOffers=" + jobOffers +
                 '}';
@@ -124,12 +127,12 @@ public class Company {
         this.password = password;
     }
 
-    public LocalDate getLastTimeLogin() {
-        return LastTimeLogin;
+    public Calendar getLastTimeLogin() {
+        return lastTimeLogin;
     }
 
-    public void setLastTimeLogin(LocalDate lastTimeLogin) {
-        LastTimeLogin = lastTimeLogin;
+    public void setLastTimeLogin(Calendar lastTimeLogin) {
+        this.lastTimeLogin = lastTimeLogin;
     }
 
     public List<LaboralExperience> getLaboralExperiences() {

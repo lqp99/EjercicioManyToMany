@@ -5,26 +5,26 @@
 
 package ejercicioGestionDeCandidaturas.gui;
 
-import ejercicioGestionDeCandidaturas.controllerServices.UserController;
-import ejercicioGestionDeCandidaturas.modelPojo.User;
+import ejercicioGestionDeCandidaturas.controllerServices.CompanyController;
+import ejercicioGestionDeCandidaturas.modelPojo.Company;
 
 /**
  *
  * @author Luis Quintano
  */
-public class ConfirmacionDeleteUser extends javax.swing.JFrame {
+public class ConfirmacionDeleteCompany extends javax.swing.JFrame {
 
-    private final UserController userController;
+    private final CompanyController companyController;
     
-    private final User user;
+    private final Company company;
     
     /**
      * Creates new form ConfirmacionDeleteUser
      */
-    public ConfirmacionDeleteUser(UserController userController, User user) {
+    public ConfirmacionDeleteCompany(CompanyController companyController, Company company) {
         initComponents();
-        this.userController = userController;
-        this.user = user;
+        this.companyController = companyController;
+        this.company = company;
     }
 
     /**
@@ -44,7 +44,7 @@ public class ConfirmacionDeleteUser extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Estás seguro de que quieres eliminar la cuenta de usuario?");
+        jLabel1.setText("Estás seguro de que quieres eliminar la cuenta de compañía?");
 
         jButtonSi.setBackground(new java.awt.Color(255, 0, 0));
         jButtonSi.setText("SÍ");
@@ -67,14 +67,14 @@ public class ConfirmacionDeleteUser extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
+                .addGap(53, 53, 53)
                 .addComponent(jButtonNo, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonSi, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52))
+                .addGap(51, 51, 51))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -94,7 +94,7 @@ public class ConfirmacionDeleteUser extends javax.swing.JFrame {
 
     private void jButtonSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiActionPerformed
         // TODO add your handling code here:
-        this.userController.removeUser(user);
+        this.companyController.removeCompany(this.company);
         Inicio i = new Inicio();
         i.setVisible(true);
         dispose();  //para que se cierre la página actual.
