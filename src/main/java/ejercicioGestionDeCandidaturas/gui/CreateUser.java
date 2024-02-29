@@ -308,9 +308,9 @@ public class CreateUser extends javax.swing.JFrame {
         if (confirmPassword.equals("Introduce la contraseña") || confirmPassword.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Hay que confirmar la Contraseña", "ERROR, PASSWORD NO CONFIRMADA", JOptionPane.ERROR_MESSAGE);
         } else {
-            if (!confirmPassword.equals(password)) {
+            if (!confirmPassword.equals(password) && telephone < 100000) {
                 JOptionPane.showMessageDialog(null, "Las Contraseñas no coinciden", "ERROR", JOptionPane.ERROR_MESSAGE);
-            } else if(telephone < 100000){ 
+            //} else if(telephone < 100000){ 
                 //JOptionPane.showMessageDialog(null, "No se ha introducido un Teléfono valido", "ERROR", JOptionPane.ERROR_MESSAGE);
             } else {
                 User user = new User(name, mail, description, telephone, password);

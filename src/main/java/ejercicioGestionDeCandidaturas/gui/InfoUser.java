@@ -9,6 +9,7 @@ import ejercicioGestionDeCandidaturas.controllerServices.UserController;
 import ejercicioGestionDeCandidaturas.modelPojo.AcademicInfo;
 import ejercicioGestionDeCandidaturas.modelPojo.User;
 import java.util.List;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -26,6 +27,7 @@ public class InfoUser extends javax.swing.JFrame {
      */
     public InfoUser(UserController userController, User user) {
         initComponents();
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.userController = userController;
         this.user = user;
     }

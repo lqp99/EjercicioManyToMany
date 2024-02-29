@@ -71,6 +71,7 @@ public class UserController {
 
         if (user != null && user.getPassword().equals(password)){
             user.setLastTimeLogin(Calendar.getInstance());  //para actualizar la ultima vez que se hizo login a la hora actual.
+            this.userDAOimpl.updateUser(user);
             return user;
             //return true;
         } else {

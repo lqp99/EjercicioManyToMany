@@ -69,6 +69,7 @@ public class CompanyController {
 
         if (company != null && company.getPassword().equals(password)){
             company.setLastTimeLogin(Calendar.getInstance());  //para actualizar la ultima vez que se hizo login a la hora actual.
+            this.companyDAOimpl.updateCompany(company);
             return company;
             //return true;
         } else {

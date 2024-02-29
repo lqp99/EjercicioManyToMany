@@ -185,13 +185,13 @@ public class LoginUser extends javax.swing.JFrame {
 
     private void loginUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginUserActionPerformed
         // TODO add your handling code here:
-        String name = this.jTextFieldName.getText();
+        String nameOrMail = this.jTextFieldName.getText();
         String password = new String(this.jPasswordField.getPassword());
         
-        if (this.userController.login(name, password) != null) {
-            JOptionPane.showMessageDialog(null, "Bienvenido al Sistema" + name, "LOGIN CORRECTO", JOptionPane.INFORMATION_MESSAGE);
+        if (this.userController.login(nameOrMail, password) != null) {
+            JOptionPane.showMessageDialog(null, "Bienvenido al Sistema " + nameOrMail, "LOGIN CORRECTO", JOptionPane.INFORMATION_MESSAGE);
             
-            User user = this.userController.getUserByName(name);  //nos guardamos el user que inicia sesión.
+            User user = this.userController.getUserByName(nameOrMail);  //nos guardamos el user que inicia sesión.
             
             InfoUser infoUser = new InfoUser(this.userController, user);
             infoUser.setVisible(true);

@@ -7,6 +7,7 @@ package ejercicioGestionDeCandidaturas.gui;
 
 import ejercicioGestionDeCandidaturas.controllerServices.CompanyController;
 import ejercicioGestionDeCandidaturas.modelPojo.Company;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,6 +22,7 @@ public class InfoCompany extends javax.swing.JFrame {
     
     public InfoCompany(CompanyController companyController, Company company) {
         initComponents();
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.companyController = companyController;
         this.company = company;
     }

@@ -223,7 +223,6 @@
             <Component class="javax.swing.JButton" name="jButtonAddLaboralExperience">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Add Laboral Experience"/>
-                <Property name="actionCommand" type="java.lang.String" value="Add Laboral Experience"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="jButtonDeleteLaboralExperience">

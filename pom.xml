@@ -25,6 +25,7 @@
             <version>6.4.0.Final</version>
         </dependency>
     </dependencies>
+    <!--
     <build>
         <plugins>
             <plugin>
@@ -53,4 +54,5 @@
             </plugin>
         </plugins>
     </build>
+    -->
 </project>
