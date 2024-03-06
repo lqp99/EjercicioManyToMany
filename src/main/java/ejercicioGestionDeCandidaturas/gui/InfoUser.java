@@ -261,6 +261,7 @@ public class InfoUser extends javax.swing.JFrame {
         // TODO add your handling code here:
         ConfirmacionDeleteUser cdu = new ConfirmacionDeleteUser(this.userController, user);
         cdu.setVisible(true);
+        dispose();  //para que se cierre la página actual.
     }//GEN-LAST:event_deleteUserActionPerformed
 
     private void salirCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirCuentaActionPerformed

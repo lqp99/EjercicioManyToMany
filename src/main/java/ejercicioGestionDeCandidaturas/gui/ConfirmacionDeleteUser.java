@@ -103,6 +103,8 @@ public class ConfirmacionDeleteUser extends javax.swing.JFrame {
     private void jButtonNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNoActionPerformed
         // TODO add your handling code here:
         dispose();  //para que se cierre la página actual.
+        InfoUser iu = new InfoUser(this.userController, this.user);
+        iu.setVisible(true);
     }//GEN-LAST:event_jButtonNoActionPerformed
 
     /**

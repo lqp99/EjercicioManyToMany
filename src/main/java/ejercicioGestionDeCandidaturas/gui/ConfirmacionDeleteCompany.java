@@ -103,6 +103,8 @@ public class ConfirmacionDeleteCompany extends javax.swing.JFrame {
     private void jButtonNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNoActionPerformed
         // TODO add your handling code here:
         dispose();  //para que se cierre la página actual.
+        InfoCompany ic = new InfoCompany(this.companyController, this.company);
+        ic.setVisible(true);
     }//GEN-LAST:event_jButtonNoActionPerformed
 
     /**
